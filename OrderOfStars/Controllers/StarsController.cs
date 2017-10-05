@@ -24,6 +24,12 @@ namespace OrderOfStars.Controllers
             return Json(db.Stars);
         }
 
+        public int ReturnLength()
+        {
+            int length = db.Stars.Count();
+            return length;
+        }
+
 
         // GET: api/Stars/5
         [ResponseType(typeof(Stars))]

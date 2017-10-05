@@ -5,20 +5,24 @@
         $.getJSON("/api/Stars",
             function (json) {
                 //Append each row to html table
-                $("p").append(json.length);
+
                 for (var i = 0; i < json.length; i++) {
                     $(".starName."+i).append(json[i].FirstName);
                     $(".starName."+i).append(" " + json[i].SecondName);
-                    $(".starDescription." + i).append(json[i].Description);
+                    $(".starDescription." +i).append(json[i].Description);
                 }
             });
     });
 </script>
-@{
-    
-    //Выводит несколько карточек на главной, пока просто генерирует одинаковые
-    for (int i = 0; i < 10; i++)
-    {
+
+@using OrderOfStars.Controllers;
+@{           
+            StarsController starsController = new StarsController();///Тут будет типа 
+            int length = starsController.ReturnLength();///////////////костылик...
+
+           
+            for (int i = 0; i < length; i++)
+            {
         <div class="starCard @i">
             <img />
             <p class="starName @i"></p>
