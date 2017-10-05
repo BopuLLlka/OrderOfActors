@@ -16,10 +16,5 @@ namespace OrderOfStars.Controllers
 
             return View();
         }
-
-
-
-       
-
     }
 }

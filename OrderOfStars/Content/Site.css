@@ -49,9 +49,10 @@ body {
     box-sizing:border-box;
     min-width: 700px;
     max-width: 60%;
-    height: 1000px;
+    min-height: 730px;
     margin: auto;
     margin-top: 10px;
+    margin-bottom:10px;
     padding: 10px;
 }
 
@@ -113,7 +114,6 @@ footer {
 
 
 .choiceButtons {
-
     padding: 5px;
     height: 50%;
     width: 50%;
@@ -121,29 +121,49 @@ footer {
     
 }
 .chBtn {
+    margin-right:100%;
     margin-bottom:1px;
     border-radius: 8px;
     min-width: 200px;
     width: 300px;
     height: 60px;
 }
-.chBtn:hover{   
-    cursor:pointer;
+
+.chBtn:hover {
+    cursor: pointer;
 }
 
 #choiceContainer{
-    display:block;
-}
-
-#starForm{
     width:100%;
     display:block;
-    visibility:hidden;
-    float:left; 
+    margin:auto;
+    float:left;
+}
+
+#starForm {
+    visibility: visible;
+    width: 100%;
+    display: none;
+    float: left;
 }
 .form-group{
     width:100%;
 }
+
+#customerForm {
+    width: 100%;
+    display: none;
+    float: left;
+}
+#authorizationForm {
+    width: 100%;
+}
+.myBtn:hover{
+    cursor:pointer;
+}
+
+
+
 
 
 

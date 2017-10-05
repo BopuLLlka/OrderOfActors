@@ -7,6 +7,7 @@
             var height = $('.registrationWelcomeText').height();
             buttonContainer.css("margin-top", height / 2 + buttonHeight - 15);
         };
+       
 
         resizeFunct();
 
@@ -14,13 +15,16 @@
             resizeFunct();
         });
         $('#starBtn').click(function () {
-           // $('#choiceContainer *').css("visibility", "collapse");
             $('#choiceContainer').css("display", "none");
-            $('#starForm').css("visibility", "visible");
+            $('#starForm').css("display", "block");
+            $('#customerForm').css("display", "none");
+           
         });
         $('#customerBtn').click(function () {
             $('#choiceContainer').css("display", "none");
-            $('#customerForm').css("visibility", "visible");
+            $('#starForm').css("display", "none");
+            $('#customerForm').css("display", "block");
+            
         });
     });
 </script>
@@ -28,25 +32,25 @@
 <div id="choiceContainer">
     <p class="registrationWelcomeText">Добро пожаловать на сайт.<br>Если Вы звезда, то вам нужно зарегистрироваться и указать своё расписание,чтобы Вас могли выбрать.<br>Если Вы заказчик, то Вам нужно зарегистрироваться, для возможности заказывать звузду.</p>
     <div class="choiceButtons">
-        <button id="starBtn" class="chBtn btn-outline-dark">Я звезда</button>
-        <button id="customerBtn" class="chBtn btn-outline-dark">Я заказчик</button>
+        <button id="starBtn" class=" btn-outline-dark chBtn">Я звезда</button>
+        <button id="customerBtn" class=" btn-outline-dark chBtn">Я заказчик</button>
     </div>
 </div>
 
 
-<form id="starForm" action="/api/Users" method="post">
+<form id="starForm" action="/api/Stars" method="post">
 
     <div class="form-group">
         <label class="form-control-label" for="firstName">Ваше имя:</label>
-        <input name="Name" required type="text" class="form-control" id="firstName" placeholder="Ваше имя">
+        <input name="FirstName" required type="text" class="form-control" id="firstName" placeholder="Ваше имя">
     </div>
     <div class="form-group">
         <label class="form-control-label" for="secondName">Ваша фамилия:</label>
-        <input type="text" class="form-control" id="secondName" placeholder="Ваша фамилия">
+        <input name="SecondName" type="text" class="form-control" id="secondName" placeholder="Ваша фамилия">
     </div>
     <div class="form-group">
         <label for="regEmail">Ваш E-Mail:</label>
-        <input name="eMail" required type="email" class="form-control" id="regEmail" placeholder="name@example.com">
+        <input name="EMail" required type="email" class="form-control" id="regEmail" placeholder="name@example.com">
     </div>
     <div class="form-group">
     <label for="inputPassword1">Ваш пароль:</label>
@@ -64,9 +68,44 @@
     </div>
     <div class="form-group">
         <label for="descriptionTextArea">Описание:</label>
-        <textarea class="form-control" id="descriptionTextArea" rows="3"></textarea>
+        <textarea name="Description" class="form-control" id="descriptionTextArea" rows="3"></textarea>
     </div>
-    <button type="submit" class="btn btn-outline-dark">Зарегистрироваться</button>
+    <button type="submit" class="btn btn-outline-dark myBtn">Зарегистрироваться</button>
+</form>
+
+<form id="customerForm" action="/api/Stars" method="post">
+
+    <div class="form-group">
+        <label class="form-control-label" for="firstName">Ваше имя:</label>
+        <input name="FirstName" required type="text" class="form-control" id="firstName" placeholder="Ваше имя">
+    </div>
+    <div class="form-group">
+        <label class="form-control-label" for="secondName">Ваша фамилия:</label>
+        <input name="SecondName" type="text" class="form-control" id="secondName" placeholder="Ваша фамилия">
+    </div>
+    <div class="form-group">
+        <label for="regEmail">Ваш E-Mail:</label>
+        <input name="EMail" required type="email" class="form-control" id="regEmail" placeholder="name@example.com">
+    </div>
+    <div class="form-group">
+        <label for="inputPassword1">Ваш пароль:</label>
+        <input required type="password" id="inputPassword1" class="form-control" aria-describedby="passwordHelpBlock">
+        <small id="passwordHelpBlock" class="form-text text-muted">
+            Ваш пароль может быть длинной 8-20 симолов, содержать латинские буквы и числа, и не должен иметь пробелов и специальных символов.
+        </small>
+    </div>
+    <div class="form-group">
+        <label required for="inputPassword2">Повторите пароль:</label>
+        <input type="password" id="inputPassword2" class="form-control" aria-describedby="passwordHelpBlock">
+        <small id="passwordHelpBlock" class="form-text text-muted">
+            Ваш пароль может быть длинной 8-20 симолов, содержать латинские буквы и числа, и не должен иметь пробелов и специальных символов.
+        </small>
+    </div>
+    <div class="form-group">
+        <label class="form-control-label" for="organizationName">Назвние организации:</label>
+        <input name="organizationName" type="text" class="form-control" id="organizationName" placeholder="Назвние организации">
+    </div>
+    <button type="submit" class="btn btn-outline-dark myBtn">Зарегистрироваться</button>
 </form>
 
 

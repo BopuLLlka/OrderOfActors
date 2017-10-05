@@ -7,11 +7,13 @@ namespace OrderOfStars.Models
 {
     public class Stars
     {
-        int Id { get; set; }
-        string FirstName { get; set; }
-        string SecondName { get; set; }
-        string EMail { get; set; }
-        string Discription { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string SecondName { get; set; }
+        public string EMail { get; set; }
+        public string Description { get; set; }
+        public string PasswordHash { get; set; }
+        public string Solt { get; set; }
 
     }
 }

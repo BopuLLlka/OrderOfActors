@@ -19,6 +19,7 @@ namespace OrderOfStars.Models
         {
         }
 
-        public System.Data.Entity.DbSet<OrderOfStars.Models.Users> Users { get; set; }
+        public DbSet<OrderOfStars.Models.Users> Users { get; set; }
+        public DbSet<OrderOfStars.Models.Stars> Stars { get; set; }
     }
 }
