@@ -1,14 +1,29 @@
-﻿@{
+﻿<!--Html.Partial("StarCard");-->
+<script>
+    $(document).ready(function () {
+        //Call EmpDetails jsonResult Method
+        $.getJSON("/api/Stars",
+            function (json) {
+                //Append each row to html table
+                $("p").append(json.length);
+                for (var i = 0; i < json.length; i++) {
+                    $(".starName."+i).append(json[i].FirstName);
+                    $(".starName."+i).append(" " + json[i].SecondName);
+                    $(".starDescription." + i).append(json[i].Description);
+                }
+            });
+    });
+</script>
+@{
+    
     //Выводит несколько карточек на главной, пока просто генерирует одинаковые
-    int n = 11;
-    for (int i = 1; i < n; i++)
+    for (int i = 0; i < 10; i++)
     {
+        <div class="starCard @i">
+            <img />
+            <p class="starName @i"></p>
+            <p class="starDescription @i"></p>
+        </div>
 
-<div class="starCard">
-        <img />
-        <p class="starName">Звезда Номер @i</p>
-        <p class="starDescription">Очень много текста, ибо это описание звезды, ведь Вы, когда заказываетте звезду, наверняка, не знаете, ЧТО ЭТО ЗА ХЕР С ГОРЫ. Описание вам в помощь.</p>
-</div>
-
-            }
     }
+}

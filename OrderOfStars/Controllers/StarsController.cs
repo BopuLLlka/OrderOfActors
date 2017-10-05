@@ -5,12 +5,11 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using OrderOfStars.Models;
 using Newtonsoft.Json;
-using System.Web.Mvc;
+using System.Web.Http.Results;
 
 namespace OrderOfStars.Controllers
 {
@@ -19,19 +18,12 @@ namespace OrderOfStars.Controllers
         private OrderOfStarsBaseContext db = new OrderOfStarsBaseContext();
 
         // GET: api/Stars
-        public IQueryable<Stars> GetStars()
+        public JsonResult<DbSet<Stars>> GetStars()
         {
 
-            //List<Stars> stars = db.Stars.ToList();
-
-
-            return db.Stars;
-             
-            
-          //  Stars stars = new Stars();
-          //  stars = db.Stars;
-           // return stars = JsonConvert.DeserializeObject<Stars>(json);
+            return Json(db.Stars);
         }
+
 
         // GET: api/Stars/5
         [ResponseType(typeof(Stars))]

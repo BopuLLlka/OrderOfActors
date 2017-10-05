@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OrderOfStars.Models;
+using OrderOfStars.Controllers;
 
 namespace OrderOfStars.Controllers
 {
@@ -14,6 +16,10 @@ namespace OrderOfStars.Controllers
 
             return View();
         }
+
+        private OrderOfStarsBaseContext db = new OrderOfStarsBaseContext();
+
+      
 
     }
 }
