@@ -259,13 +259,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Registration\Index.cshtml" />
     <Content Include="Views\Authorization\Index.cshtml" />
-    <Content Include="Views\UserMVC\Index.cshtml" />
-    <Content Include="Views\Home\StarCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />
     <Folder Include="Views\Admin\" />
-    <Folder Include="Views\People\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

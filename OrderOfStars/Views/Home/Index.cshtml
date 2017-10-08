@@ -9,7 +9,12 @@
                 for (var i = 0; i < json.length; i++) {
                     $(".starName."+i).append(json[i].FirstName);
                     $(".starName."+i).append(" " + json[i].SecondName);
-                    $(".starDescription." +i).append(json[i].Description);
+
+
+                    if (json[i].Description.length > 230)
+                    $(".starDescription." + i).append(json[i].Description.substr(0,230)+"...");
+                        else
+                    $(".starDescription." + i).append(json[i].Description);
                 }
             });
     });
