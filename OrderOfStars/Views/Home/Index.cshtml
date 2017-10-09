@@ -28,7 +28,7 @@
            
             for (int i = 0; i < length; i++)
             {
-        <div class="starCard @i">
+        <div class="starCard @i" onclick="location.href='@Url.Action("Index","StarCard",new { id = i })'">
             <img />
             <p class="starName @i"></p>
             <p class="starDescription @i"></p>

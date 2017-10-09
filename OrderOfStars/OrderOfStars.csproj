@@ -207,6 +207,7 @@
     <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\StarCardController.cs" />
     <Compile Include="Controllers\StarsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -259,6 +260,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Registration\Index.cshtml" />
     <Content Include="Views\Authorization\Index.cshtml" />
+    <Content Include="Views\StarCard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />

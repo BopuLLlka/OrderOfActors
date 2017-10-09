@@ -33,15 +33,17 @@ namespace OrderOfStars.Controllers
 
         // GET: api/Stars/5
         [ResponseType(typeof(Stars))]
-        public IHttpActionResult GetStars(int id)
+        public Stars GetStars(int id)
         {
-            Stars stars = db.Stars.Find(id);
-            if (stars == null)
-            {
-                return NotFound();
-            }
+            //Stars star = db.Stars.Find(0); хз почему это не работает
+            Stars star = db.Stars.ToList()[id];
 
-            return Ok(stars);
+            if (star == null)
+            {
+                return (new Stars { Id=0, FirstName="НЕНАЙДЕНААААА"});
+            }
+            
+            return star;
         }
 
         // PUT: api/Stars/5
