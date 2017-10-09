@@ -15,12 +15,12 @@ namespace OrderOfStars.Controllers
             StarsController starsController = new StarsController();
             Stars star=starsController.GetStars(id);
 
-            ViewBag.Id = star.Id;
-            ViewBag.FirstName = star.FirstName;
-            ViewBag.SecondName = star.SecondName;//Исправить на LastName
-            ViewBag.Description = star.Description;
+            //ViewBag.Id = star.Id;
+            //ViewBag.FirstName = star.FirstName;
+            //ViewBag.SecondName = star.SecondName;//Исправить на LastName
+            //ViewBag.Description = star.Description;
 
-            return View();
+            return View(star);
         }
     }
 }

@@ -11,8 +11,8 @@
                     $(".starName."+i).append(" " + json[i].SecondName);
 
 
-                    if (json[i].Description.length > 230)
-                    $(".starDescription." + i).append(json[i].Description.substr(0,230)+"...");
+                    if (json[i].Description.length > 180)
+                    $(".starDescription." + i).append(json[i].Description.substr(0,180)+"...");
                         else
                     $(".starDescription." + i).append(json[i].Description);
                 }
