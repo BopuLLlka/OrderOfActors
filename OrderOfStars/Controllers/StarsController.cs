@@ -24,9 +24,10 @@ namespace OrderOfStars.Controllers
             return Json(db.Stars);
         }
 
-        public int ReturnLength()
+        public int ReturnLength(string s)
         {
             int length = db.Stars.Count();
+
             return length;
         }
 
