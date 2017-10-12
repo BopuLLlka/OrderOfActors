@@ -1,5 +1,9 @@
-﻿<!--Html.Partial("StarCard");-->
-<script>
+﻿<script>
+    function myFunction(index) {
+        var url = "StarCard/Index/" + index;
+        window.location.href = url;
+    };
+
     $(document).ready(function () {
         //Call EmpDetails jsonResult Method
         $.getJSON("/api/Stars",
@@ -7,10 +11,17 @@
                 //Append each row to html table
 
                 for (var i = 0; i < json.length; i++) {
-                    $(".starName."+i).append(json[i].FirstName);
+                    $("#mainContent").append("<div class='starCard " + i + "'onclick='myFunction("+i+")'></div>");
+                   
+                    var starCard = $(".starCard." + i);
+                    starCard.append("<img/>");
+                    starCard.append("<p class='starName "+i+"'></p>");
+                    starCard.append("<p class='starDescription " + i + "'></p>");
+
+                 
+
+                    $(".starName." + i).append(json[i].FirstName);
                     $(".starName."+i).append(" " + json[i].SecondName);
-
-
                     if (json[i].Description.length > 180)
                     $(".starDescription." + i).append(json[i].Description.substr(0,180)+"...");
                         else
@@ -19,20 +30,3 @@
             });
     });
 </script>
-
-@using OrderOfStars.Controllers;
-@{           
-            StarsController starsController = new StarsController();///Тут будет типа 
-            int length = starsController.ReturnLength("asd");///////////////костылик...
-
-           
-            for (int i = 0; i < length; i++)
-            {
-        <div class="starCard @i" onclick="location.href='@Url.Action("Index","StarCard",new { id = i })'">
-            <img />
-            <p class="starName @i"></p>
-            <p class="starDescription @i"></p>
-        </div>
-
-    }
-}
