@@ -24,8 +24,9 @@
             </div>
             <div>
               <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
-              <div class="accountErrorText">@Html.ValidationSummary()</div>
-              <p><button type="submit">Войти</button></p>
+             
+             <button class="btn btn-outline-dark myBtn" type="submit">Войти</button>
+                <div class="accountErrorText">@Html.ValidationSummary()</div>
             </div>
         }
     }

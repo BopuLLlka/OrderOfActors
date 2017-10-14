@@ -19,12 +19,19 @@
         @{
             if (User.Identity.IsAuthenticated)
             {
-                <div id="headerUserName" onclick="location.href='@Url.Action("LogOut", "Account")'">@User.Identity.Name</div>
+                <div class="headerUserName dropdownHover">
+                    <div class="headerHoverText">@User.Identity.Name</div>
+                    <div class="dropdownHover-content" aria-labelledby="dropdownMenuButton">
+                        <div>Личный кабинет</div>
+                        <div>Настройки</div>
+                        <div onclick="location.href='@Url.Action("LogOut", "Account")'">Выход</div>
+                    </div>
+                </div>
             }
             else
             {
                 <div id="headerBtnContainer">
-                    <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("Login", "Account")'">Авторизация</button>
+                    <button class="btn btn-outline-dark " onclick="location.href='@Url.Action("Login", "Account")'">Авторизация</button>
                     <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("Register", "Account")'">Регистрация</button>
                 </div>
             }
