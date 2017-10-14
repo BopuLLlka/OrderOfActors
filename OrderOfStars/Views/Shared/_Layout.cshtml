@@ -16,8 +16,19 @@
     <div id="header">
         <div class="logo" onclick="location.href='@Url.Action("Index", "Home")'"></div>
         <div id="userProf"></div>
-        <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("Register", "Account")'">Регистрация</button>
-        <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("Index", "Authorization")'">Авторизация</button>
+        @{
+            if (User.Identity.IsAuthenticated)
+            {
+                <div id="headerUserName" onclick="location.href='@Url.Action("LogOut", "Account")'">@User.Identity.Name</div>
+            }
+            else
+            {
+                <div id="headerBtnContainer">
+                    <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("Login", "Account")'">Авторизация</button>
+                    <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("Register", "Account")'">Регистрация</button>
+                </div>
+            }
+        }
     </div>
     <div id="mainContent">
         @RenderBody()

@@ -18,13 +18,13 @@ body {
     min-width: 800px;
     height: 75px;
     border-bottom: 1px black solid;
-    padding: 5px;
-    padding-right: 10px;
+
     
 }
 
 .logo {
-  
+    margin-top:5px;
+    margin-left:5px;
     float: left;
     width: 360px;
     height: 62px;
@@ -35,10 +35,24 @@ body {
     cursor:pointer;
 }
 
+#headerUserName {
+    cursor:pointer;
+    padding:15px;
+    font-size:25px;
+    float: right;
+    height: 100%;
+    border-left: 1px solid black;
+}
+#headerBtnContainer {
+    padding: 15px;
+    float: right;
+    height: 100%;
+   
+}
 #header > button {
     margin-top: 10px;
     margin-left: 3px;
-    float: right;
+    float: left;
 }
 #header > button:hover {
     cursor: pointer;
@@ -189,6 +203,14 @@ footer {
     padding-bottom:10px;
     border-bottom:1px solid grey;
 }
+
+.accountErrorText {
+    font-size: 25px;
+    width: 100%;
+    color:red;
+}
+
+
 
 
 
