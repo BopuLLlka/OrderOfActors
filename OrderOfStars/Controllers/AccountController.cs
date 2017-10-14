@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace AspNetIdentityApp.Controllers
 {
-    public class AccountsController : Controller
+    public class AccountController : Controller
     {
         private ApplicationUserManager UserManager
         {
@@ -24,17 +24,21 @@ namespace AspNetIdentityApp.Controllers
         {
             return View();
         }
+        public ActionResult Login()
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<ActionResult> Register(RegisterModel model)
         {
             if (ModelState.IsValid)
             {
-                ApplicationUser user = new ApplicationUser { UserName = model.Email, Email = model.Email, Year = model.Year };
+                ApplicationUser user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Login", "Accounts");
+                    return RedirectToAction("Login", "Account");
                 }
                 else
                 {

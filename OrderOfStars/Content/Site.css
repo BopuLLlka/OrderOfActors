@@ -183,6 +183,13 @@ footer {
     border: 1px solid black;
 }
 
+.pageUpTitle{
+    font-size:25px;
+    width:100%;
+    padding-bottom:10px;
+    border-bottom:1px solid grey;
+}
+
 
 
 

@@ -1,44 +1,37 @@
-﻿@model OrderOfStars.Models.RegisterModel
+﻿@model AspNetIdentityApp.Models.RegisterModel
 
 @{
     ViewBag.Title = "Register";
 }
-
-<h2>Регистрация</h2>
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <br />
+
     <div>
-        <br />
-        <h4>Регистрация пользователя</h4>
+       <div class="pageUpTitle">Регистрация пользователя</div>
         <hr />
         @Html.ValidationSummary(false)
-        <br />
-        <div>
-            Электронный адрес
-            <div>
-                @Html.EditorFor(model => model.Email)
-            </div>
+
+    
+
+       <div class="form-group">
+            <label for="Email">Ваш E-Mail:</label>
+            <input name="Email" required type="email" class="form-control" id="Email" placeholder="name@example.com">
         </div>
-       
-        <br />
-        <div>
-            Пароль
-            <div>
-                @Html.EditorFor(model => model.Password)
-            </div>
-        </div>
-        <br />
-        <div>
-            Подтвердить пароль
-            <div>
-                @Html.EditorFor(model => model.PasswordConfirm)
-            </div>
-        </div>
-        <br />
+        <div class="form-group">
+        <label for="Password">Ваш пароль:</label>
+        <input name="Password" required type="password" id="Password" class="form-control" aria-describedby="passwordHelpBlock">
+        <small id="passwordHelpBlock" class="form-text text-muted">
+            Ваш пароль может быть длинной 8-20 симолов, содержать латинские буквы и числа, и не должен иметь пробелов и специальных символов.
+        </small>
+    </div>
+    <div class="form-group">
+        <label required for="PasswordConfirm">Повторите пароль:</label>
+        <input name="PasswordConfirm" type="password" id="PasswordConfirm" class="form-control" aria-describedby="passwordHelpBlock">
+        <small id="passwordHelpBlock" class="form-text text-muted">
+            Ваш пароль может быть длинной 8-20 симолов, содержать латинские буквы и числа, и не должен иметь пробелов и специальных символов.
+        </small>
+    </div>      
         <div>
             <div>
                 <input type="submit" value="Зарегистрировать" />
