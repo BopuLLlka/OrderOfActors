@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
-
+﻿using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 namespace OrderOfStars.Models
 {
     public class OrderOfStarsBaseContext : DbContext
@@ -19,7 +15,7 @@ namespace OrderOfStars.Models
         {
         }
 
-        public DbSet<OrderOfStars.Models.Users> Users { get; set; }
+        
         public DbSet<OrderOfStars.Models.Stars> Stars { get; set; }
     }
 }
