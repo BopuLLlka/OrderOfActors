@@ -23,6 +23,10 @@
                     <div class="headerHoverText">@User.Identity.Name</div>
                     <div class="dropdownHover-content" aria-labelledby="dropdownMenuButton">
                         <div>Личный кабинет</div>
+                        @if(@Roles.IsUserInRole("Admin"))
+                        { 
+                        <div onclick="location.href='@Url.Action("AdminPanel", "Admin")'">Админка</div>
+                        }
                         <div>Настройки</div>
                         <div onclick="location.href='@Url.Action("LogOut", "Account")'">Выход</div>
                     </div>
