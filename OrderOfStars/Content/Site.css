@@ -1,8 +1,4 @@
-﻿* {
-    font-size: 17px;
-}
-
-body {
+﻿body {
     background-color: #F5F5F5;
     padding-bottom: 20px;
 }
@@ -214,7 +210,10 @@ footer {
     width: 100%;
     color:red;
 }
-
+.simpleSiteText {
+    padding: 5px;
+    font-size: 25px;
+}
 
 
 

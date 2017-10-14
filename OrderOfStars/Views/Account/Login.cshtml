@@ -2,24 +2,31 @@
 
 <div class="pageUpTitle">Авторизация пользователя</div>
 
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        <div class="simpleSiteText">Вы уже вошли на сайт как: @User.Identity.Name</div>
+        <div class="simpleSiteText">@Html.ActionLink("Вернуться на главную страницу", "Index", "Home")</div>
+    }
+    else
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-group">
-        <label for="Email">Ваш E-Mail:</label>
-        <input name="Email" required type="email" class="form-control" id="Email" placeholder="name@example.com">
-    </div>
-        <div class="form-group">
-            <label for="Password">Ваш пароль:</label>
-            <input name="Password" required type="password" id="Password" class="form-control" aria-describedby="passwordHelpBlock">
-        </div>
-    <div>
-       
-        <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
-        <div class="accountErrorText">@Html.ValidationSummary()</div>
-        <p><button type="submit">Войти</button></p>
-    </div>
+            <div class="form-group">
+                <label for="Email">Ваш E-Mail:</label>
+                <input name="Email" required type="email" class="form-control" id="Email" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="Password">Ваш пароль:</label>
+                <input name="Password" required type="password" id="Password" class="form-control" aria-describedby="passwordHelpBlock">
+            </div>
+            <div>
+              <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+              <div class="accountErrorText">@Html.ValidationSummary()</div>
+              <p><button type="submit">Войти</button></p>
+            </div>
+        }
+    }
 }

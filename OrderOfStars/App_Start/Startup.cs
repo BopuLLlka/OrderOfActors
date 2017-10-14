@@ -22,7 +22,7 @@ namespace AspNetIdentityApp
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Accounts/Login"),
+                LoginPath = new PathString("/Account/Login"),
             });
         }
     }

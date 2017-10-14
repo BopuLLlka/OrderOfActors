@@ -21,19 +21,19 @@ namespace OrderOfStars.Controllers
                 return HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>();
             }
         }
+        
         [Authorize(Roles ="Admin")]
         public ActionResult Index()
         {
-
-
             return View(RoleManager.Roles);
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
         }
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create(CreateRoleModel model)
         {
             if (ModelState.IsValid)
@@ -54,7 +54,7 @@ namespace OrderOfStars.Controllers
             }
             return View(model);
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(string id)
         {
             ApplicationRole role = await RoleManager.FindByIdAsync(id);
@@ -65,6 +65,7 @@ namespace OrderOfStars.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(EditRoleModel model)
         {
             if (ModelState.IsValid)
@@ -87,7 +88,7 @@ namespace OrderOfStars.Controllers
             }
             return View(model);
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(string id)
         {
             ApplicationRole role = await RoleManager.FindByIdAsync(id);
