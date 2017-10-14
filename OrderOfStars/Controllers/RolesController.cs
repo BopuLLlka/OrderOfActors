@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using OrderOfStars.Models;
 using System;
@@ -20,9 +21,11 @@ namespace OrderOfStars.Controllers
                 return HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>();
             }
         }
-
+        [Authorize(Roles ="Admin")]
         public ActionResult Index()
         {
+
+
             return View(RoleManager.Roles);
         }
 

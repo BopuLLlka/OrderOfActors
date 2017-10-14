@@ -316,6 +316,7 @@
   <ItemGroup>
     <Folder Include="Areas\" />
     <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Temp\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
