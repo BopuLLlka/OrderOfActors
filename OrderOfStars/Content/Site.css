@@ -36,13 +36,18 @@ body {
 }
 
 #headerUserName {
-    cursor:pointer;
+   
     padding:15px;
     font-size:25px;
     float: right;
     height: 100%;
     border-left: 1px solid black;
 }
+#headerUserName:hover {
+        background-color: orange;
+        cursor: pointer;
+}
+
 #headerBtnContainer {
     padding: 15px;
     float: right;

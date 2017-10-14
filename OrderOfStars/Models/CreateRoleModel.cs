@@ -5,10 +5,9 @@ using System.Web;
 
 namespace OrderOfStars.Models
 {
-    public class Users
+    public class CreateRoleModel
     {
-        public int Id { get; set; }
         public string Name { get; set; }
-        public bool IsStar { get; set; }
+        public string Description { get; set; }
     }
 }
