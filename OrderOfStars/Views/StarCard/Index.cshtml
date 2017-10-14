@@ -1,11 +1,17 @@
-﻿
-@model OrderOfStars.Models.Stars
+﻿@model int
 
-<div id="fullStarCardName">@Model.FirstName @Model.SecondName</div>
-<div id="fullStarCardDescription">@Model.Description</div>
+<script>
+    $(document).ready(function () {
+        //Call EmpDetails jsonResult Method
+        $.getJSON("/api/Stars/@Model",
+            function (json) {
+                $("#mainContent").append("<div id='fullStarCardName'>" + json.FirstName + " " + json.SecondName + "</div>");
+                $("#mainContent").append("<div id='fullStarCardDescription'>"+json.Description+"</div>")
+            });
+    });
 
 
-<!--<div>@ViewBag.FirstName @ViewBag.SecondName</div>
-<div>@ViewBag.Description</div>--> 
+</script>
+
 
 

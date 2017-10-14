@@ -12,10 +12,9 @@ namespace OrderOfStars.Controllers
         // GET: StarCard
         public ActionResult Index(int id)
         {
-            StarsController starsController = new StarsController();
-            Stars star=starsController.GetStars(id);
+         
 
-            return View(star);
+            return View(id);
         }
     }
 }

@@ -166,6 +166,7 @@ footer {
     cursor:pointer;
 }
 #fullStarCardName {
+    background-color:white;
     border-radius: 6px;
     padding: 5px;
     width: 100%;
@@ -174,6 +175,7 @@ footer {
     border: 1px solid black;
 }
 #fullStarCardDescription {
+    background-color: white;
     border-radius: 6px;
     margin-top: 5px;
     padding: 5px;

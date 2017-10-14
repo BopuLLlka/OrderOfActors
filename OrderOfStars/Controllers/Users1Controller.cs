@@ -5,55 +5,51 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using OrderOfStars.Models;
-using Newtonsoft.Json;
-using System.Web.Http.Results;
 
 namespace OrderOfStars.Controllers
 {
-    public class StarsController : ApiController
+    public class Users1Controller : ApiController
     {
         private OrderOfStarsBaseContext db = new OrderOfStarsBaseContext();
 
-        // GET: api/Stars
-        public JsonResult<DbSet<Stars>> GetStars()
+        // GET: api/Users1
+        public IQueryable<Users> GetUsers()
         {
-
-            return Json(db.Stars);
+            return db.Users;
         }
 
-        // GET: api/Stars/5
-        [ResponseType(typeof(Stars))]
-        public JsonResult<Stars> GetStars(int id)
+        // GET: api/Users1/5
+        [ResponseType(typeof(Users))]
+        public IHttpActionResult GetUsers(int id)
         {
-            //Stars star = db.Stars.Find(0); хз почему это не работает
-            Stars star = db.Stars.ToList()[id];
-
-            if (star == null)
+            Users users = db.Users.Find(id);
+            if (users == null)
             {
-                return Json(new Stars { Id=0, FirstName="НЕНАЙДЕНААААА"});
+                return NotFound();
             }
-            
-            return Json(star);
+
+            return Ok(users);
         }
 
-        // PUT: api/Stars/5
+        // PUT: api/Users1/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutStars(int id, Stars stars)
+        public IHttpActionResult PutUsers(int id, Users users)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != stars.Id)
+            if (id != users.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(stars).State = EntityState.Modified;
+            db.Entry(users).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +57,7 @@ namespace OrderOfStars.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!StarsExists(id))
+                if (!UsersExists(id))
                 {
                     return NotFound();
                 }
@@ -74,35 +70,35 @@ namespace OrderOfStars.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Stars
-        [ResponseType(typeof(Stars))]
-        public IHttpActionResult PostStars(Stars stars)
+        // POST: api/Users1
+        [ResponseType(typeof(Users))]
+        public IHttpActionResult PostUsers(Users users)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Stars.Add(stars);
+            db.Users.Add(users);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = stars.Id }, stars);
+            return CreatedAtRoute("DefaultApi", new { id = users.Id }, users);
         }
 
-        // DELETE: api/Stars/5
-        [ResponseType(typeof(Stars))]
-        public IHttpActionResult DeleteStars(int id)
+        // DELETE: api/Users1/5
+        [ResponseType(typeof(Users))]
+        public IHttpActionResult DeleteUsers(int id)
         {
-            Stars stars = db.Stars.Find(id);
-            if (stars == null)
+            Users users = db.Users.Find(id);
+            if (users == null)
             {
                 return NotFound();
             }
 
-            db.Stars.Remove(stars);
+            db.Users.Remove(users);
             db.SaveChanges();
 
-            return Ok(stars);
+            return Ok(users);
         }
 
         protected override void Dispose(bool disposing)
@@ -114,9 +110,9 @@ namespace OrderOfStars.Controllers
             base.Dispose(disposing);
         }
 
-        private bool StarsExists(int id)
+        private bool UsersExists(int id)
         {
-            return db.Stars.Count(e => e.Id == id) > 0;
+            return db.Users.Count(e => e.Id == id) > 0;
         }
     }
 }
