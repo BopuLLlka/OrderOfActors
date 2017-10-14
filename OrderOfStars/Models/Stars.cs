@@ -9,11 +9,8 @@ namespace OrderOfStars.Models
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
-        public string SecondName { get; set; }
+        public string LastName { get; set; }
         public string EMail { get; set; }
         public string Description { get; set; }
-        public string PasswordHash { get; set; }
-        public string Solt { get; set; }
-
     }
 }

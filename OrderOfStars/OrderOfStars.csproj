@@ -232,6 +232,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthorizationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
@@ -249,6 +250,14 @@
     <Compile Include="Migrations\201710141747504_DataMigration.cs" />
     <Compile Include="Migrations\201710141747504_DataMigration.Designer.cs">
       <DependentUpon>201710141747504_DataMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710142033521_InitialCreate1.cs" />
+    <Compile Include="Migrations\201710142033521_InitialCreate1.Designer.cs">
+      <DependentUpon>201710142033521_InitialCreate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710142041019_Stars.cs" />
+    <Compile Include="Migrations\201710142041019_Stars.Designer.cs">
+      <DependentUpon>201710142041019_Stars.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationContext.cs" />
@@ -304,7 +313,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Registration\Index.cshtml" />
+    <Content Include="Views\Admin\CreateStar.cshtml" />
     <Content Include="Views\Authorization\Index.cshtml" />
     <Content Include="Views\StarCard\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
@@ -312,10 +321,10 @@
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Admin\AdminPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />
-    <Folder Include="Views\Admin\" />
     <Folder Include="Views\Temp\" />
   </ItemGroup>
   <ItemGroup>
@@ -343,6 +352,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710141747504_DataMigration.resx">
       <DependentUpon>201710141747504_DataMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710142033521_InitialCreate1.resx">
+      <DependentUpon>201710142033521_InitialCreate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710142041019_Stars.resx">
+      <DependentUpon>201710142041019_Stars.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

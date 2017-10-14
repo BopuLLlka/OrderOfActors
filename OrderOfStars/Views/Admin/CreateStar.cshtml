@@ -1,4 +1,4 @@
-﻿<script type="text/javascript">
+﻿@*<script type="text/javascript">
     $(document).ready(function () {
 
         function resizeFunct() {
@@ -39,7 +39,7 @@
         <button id="starBtn" class=" btn-outline-dark chBtn">Я звезда</button>
         <button id="customerBtn" class=" btn-outline-dark chBtn">Я заказчик</button>
     </div>
-</div>
+</div>*@
 
 <form id="starForm" action="/api/Stars" method="post">
 
@@ -48,26 +48,12 @@
         <input name="FirstName" required type="text" class="form-control" id="firstName" placeholder="Ваше имя">
     </div>
     <div class="form-group">
-        <label class="form-control-label" for="secondName">Ваша фамилия:</label>
-        <input name="SecondName" type="text" class="form-control" id="secondName" placeholder="Ваша фамилия">
+        <label class="form-control-label" for="lastName">Ваша фамилия:</label>
+        <input name="lastName" type="text" class="form-control" id="lastName" placeholder="Ваша фамилия">
     </div>
     <div class="form-group">
         <label for="regEmail">Ваш E-Mail:</label>
         <input name="EMail" required type="email" class="form-control" id="regEmail" placeholder="name@example.com">
-    </div>
-    <div class="form-group">
-    <label for="inputPassword1">Ваш пароль:</label>
-    <input required type="password" id="inputPassword1" class="form-control" aria-describedby="passwordHelpBlock">
-    <small id="passwordHelpBlock" class="form-text text-muted">
-       Ваш пароль может быть длинной 8-20 симолов, содержать латинские буквы и числа, и не должен иметь пробелов и специальных символов.
-    </small>
-    </div>
-    <div class="form-group">
-        <label required for="inputPassword2">Повторите пароль:</label>
-        <input type="password" id="inputPassword2" class="form-control" aria-describedby="passwordHelpBlock">
-        <small id="passwordHelpBlock" class="form-text text-muted">
-            Ваш пароль может быть длинной 8-20 симолов, содержать латинские буквы и числа, и не должен иметь пробелов и специальных символов.
-        </small>
     </div>
     <div class="form-group">
         <label for="descriptionTextArea">Описание:</label>
@@ -76,7 +62,7 @@
     <button type="submit" class="btn btn-outline-dark myBtn">Зарегистрироваться</button>
 </form>
 
-<form id="customerForm" action="/api/Customer" method="post">
+@*<form id="customerForm" action="/api/Customer" method="post">
 
     <div class="form-group">
         <label class="form-control-label" for="firstName">Ваше имя:</label>
@@ -109,6 +95,6 @@
         <input name="organizationName" type="text" class="form-control" id="organizationName" placeholder="Назвние организации">
     </div>
     <button type="submit" class="btn btn-outline-dark myBtn">Зарегистрироваться</button>
-</form>
+</form>*@
 
 

@@ -5,8 +5,9 @@
         //Call EmpDetails jsonResult Method
         $.getJSON("/api/Stars/@Model",
             function (json) {
-                $("#mainContent").append("<div id='fullStarCardName'>" + json.FirstName + " " + json.SecondName + "</div>");
-                $("#mainContent").append("<div id='fullStarCardDescription'>"+json.Description+"</div>")
+                $("#mainContent").append("<div id='fullStarCardName'>" + json.FirstName + " " + json.LastName + "</div>");
+                $("#mainContent").append("<div id='fullStarCardDescription'></div>")
+                $("#fullStarCardDescription").append(json.Description)
             });
     });
 
