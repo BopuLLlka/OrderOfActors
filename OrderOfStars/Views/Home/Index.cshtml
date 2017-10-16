@@ -1,4 +1,11 @@
 ﻿<div id="mainContent">
+    <div data-bind="foreach: star">
+        <div class="starCard" data-bind="click: function () { myFunction(id)  }">
+            <img class="starImg" />
+            <p class="starName" data-bind="text: name"></p>
+            <p class="starDescription" data-bind="text: starDescription"></p>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -8,28 +15,39 @@
     };
 
     $(document).ready(function () {
-        //Call EmpDetails jsonResult Method
         $.getJSON("/api/Stars",
             function (json) {
-                //Append each row to html table
+               
 
-                for (var i = 0; i < json.length; i++) {
-                    $("#mainContent").append("<div class='starCard " + i + "'onclick='myFunction("+i+")'></div>");
-                   
-                    var starCard = $(".starCard." + i);
-                    starCard.append("<img/>");
-                    starCard.append("<p class='starName "+i+"'></p>");
-                    starCard.append("<p class='starDescription " + i + "'></p>");
+                function ViewModel() {
+                    var self = this;
+                    self.star = ko.observableArray([]);
 
-                 
+                    for (var i = 0; i < json.length; i++) {
+                        var description = "";
 
-                    $(".starName." + i).append(json[i].FirstName);
-                    $(".starName."+i).append(" " + json[i].LastName);
-                    if (json[i].Description.length > 180)
-                    $(".starDescription." + i).append(json[i].Description.substr(0,180)+"...");
-                        else
-                    $(".starDescription." + i).append(json[i].Description);
-                }
+                        if (json[i].Description.length > 180) 
+                            description = json[i].Description.substr(0, 180) + "...";
+                        else 
+                            description = json[i].Description
+
+                        self.star.push({
+                            id:i,
+                            name: json[i].FirstName + " " + json[i].LastName,
+                            starDescription: description
+
+                        });  
+                    }
+                };
+                ko.applyBindings(new ViewModel);
             });
     });
 </script>
+
+
+
+
+
+
+
+

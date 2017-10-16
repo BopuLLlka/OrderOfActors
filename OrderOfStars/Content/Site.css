@@ -106,7 +106,7 @@
     border: 1px solid black;
     padding: 10px;
 }
-.starCard > img {
+.starImg {
     width: 150px;
     height: 100%;
     border: 1px solid lightgrey;
