@@ -1,6 +1,8 @@
 ﻿@model int
 
 <div id="mainContent">
+    <div id='fullStarCardName' data-bind="text:name"></div>
+    <div id='fullStarCardDescription' data-bind="text:description"></div>
 </div>
 
 <script>
@@ -8,13 +10,18 @@
         //Call EmpDetails jsonResult Method
         $.getJSON("/api/Stars/@Model",
             function (json) {
-                $("#mainContent").append("<div id='fullStarCardName'>" + json.FirstName + " " + json.LastName + "</div>");
-                $("#mainContent").append("<div id='fullStarCardDescription'></div>")
-                $("#fullStarCardDescription").append(json.Description)
+
+                var viewModel = {
+                    name: json.FirstName + " " + json.LastName,
+                    description: json.Description
+                }
+                ko.applyBindings(viewModel);
+
+                //$("#mainContent").append("<div id='fullStarCardName'>" + json.FirstName + " " + json.LastName + "</div>");
+                //$("#mainContent").append("<div id='fullStarCardDescription'></div>")
+                //$("#fullStarCardDescription").append(json.Description)
             });
     });
-
-
 </script>
 
 
