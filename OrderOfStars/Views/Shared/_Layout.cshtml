@@ -35,16 +35,16 @@
             else
             {
                 <div id="headerBtnContainer">
-                    <button class="btn btn-outline-dark " onclick="location.href='@Url.Action("Login", "Account")'">Авторизация</button>
-                    <button class="btn btn-outline-dark" onclick="location.href='@Url.Action("Register", "Account")'">Регистрация</button>
+                    <button class="btn btn-outline-dark myBtn" onclick="location.href='@Url.Action("Login", "Account")'">Авторизация</button>
+                    <button class="btn btn-outline-dark myBtn" onclick="location.href='@Url.Action("Register", "Account")'">Регистрация</button>
                 </div>
             }
         }
     </div>
-    <div id="mainContent">
+    
         @RenderBody()
         
-        </div>
+        
     <hr />
     <footer>
         <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
