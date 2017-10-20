@@ -10,6 +10,7 @@ using System.Web.Http.Description;
 using OrderOfStars.Models;
 using Newtonsoft.Json;
 using System.Web.Http.Results;
+using System.Net.Http;
 
 namespace OrderOfStars.Controllers
 {
@@ -76,17 +77,18 @@ namespace OrderOfStars.Controllers
 
         // POST: api/Stars
         [ResponseType(typeof(Stars))]
-        public IHttpActionResult PostStars(Stars stars)
+        public RedirectResult PostStars(Stars stars)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return Redirect(new Uri("/Admin/AdminPanel", UriKind.Relative));
             }
 
             db.Stars.Add(stars);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = stars.Id }, stars);
+            return Redirect(new Uri("/Home/Index", UriKind.Relative));
+//            return CreatedAtRoute();
         }
 
         // DELETE: api/Stars/5

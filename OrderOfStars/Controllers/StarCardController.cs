@@ -9,11 +9,12 @@ namespace OrderOfStars.Controllers
 {
     public class StarCardController : Controller
     {
-        // GET: StarCard
+ 
+
         public ActionResult Index(int id)
         {
          
-
+          
             return View(id);
         }
     }

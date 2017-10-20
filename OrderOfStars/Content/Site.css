@@ -188,9 +188,10 @@ footer {
 .myBtn:hover{
     cursor:pointer;
 }
+/*-------Страница заказа звезды-----------------*/
 #fullStarCardName {
     background-color:white;
-    border-radius: 6px;
+    border-radius: 4px;
     padding: 5px;
     width: 100%;
     font-size: 20px;
@@ -200,17 +201,38 @@ footer {
 #fullStarCardDescription {
     word-wrap: break-word;
     background-color: white;
-    border-radius: 6px;
+    border-radius: 4px;
     margin-top: 5px;
     padding: 5px;
     width: 100%;
     border: 1px solid black;
 }
-.pageUpTitle{
-    font-size:25px;
+#timePickerContainer {
+    float:left;
+    background-color: white;
+    border: 1px solid black;
+    width: 100%;
+    margin-top:5px;
+    border-radius:6px;
+}
+.myPicker {
+  
+}
+.datepicker--nav {
+    box-sizing: border-box;
+    width: 100%;
+}
+.datepicker--days-names {
+    
     width:100%;
-    padding-bottom:10px;
-    border-bottom:1px solid grey;
+}
+
+/*--------------------------------------------------*/
+.pageUpTitle {
+    font-size: 25px;
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid grey;
 }
 .accountErrorText {   
     float:left;
@@ -234,6 +256,8 @@ footer {
     background-color:dimgrey;
     color:white;
 }
+
+
 
 
 
