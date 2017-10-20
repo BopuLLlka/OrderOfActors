@@ -2,11 +2,7 @@
 
 public class ApplicationUser : IdentityUser
 {
-
-
-
     public ApplicationUser()
     {
-
     }
 }

@@ -1,7 +1,25 @@
-﻿
-@{
-    ViewBag.Title = "UsersAndRoles";
+﻿@model Tuple<List<ApplicationUser>, List<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>> 
+
+
+@Html.BeginForm("AddRoleToUser", "Admin", FormMethod.Get)
+{
+    <select>
+        @foreach (var item in Model.Item1)
+        {
+            <option name="userName" value="@item.UserName">@item.UserName</option>
+        }
+    </select>
+    <select>
+        <option name="roleName">Без роли</option>
+        @foreach (var item in Model.Item2)
+        {
+            <option name="roleName" value="@item.Name">@item.Name</option>
+        }
+    </select>
+    <button type="submit">Назначить роль</button>
 }
 
-<h2>UsersAndRoles</h2>
+
+
+
 
