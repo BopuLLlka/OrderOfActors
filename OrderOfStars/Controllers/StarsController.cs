@@ -16,7 +16,7 @@ namespace OrderOfStars.Controllers
 {
     public class StarsController : ApiController
     {
-        private OrderOfStarsBaseContext db = new OrderOfStarsBaseContext();
+        private OrderOfStarsContext db = new OrderOfStarsContext();
 
         // GET: api/Stars
         public JsonResult<DbSet<Stars>> GetStars()
@@ -34,9 +34,9 @@ namespace OrderOfStars.Controllers
 
             if (star == null)
             {
-                return Json(new Stars { Id=0, FirstName="НЕНАЙДЕНААААА"});
+                return Json(new Stars { Id = 0, FirstName = "НЕНАЙДЕНААААА" });
             }
-            
+
             return Json(star);
         }
 
@@ -88,7 +88,7 @@ namespace OrderOfStars.Controllers
             db.SaveChanges();
 
             return Redirect(new Uri("/Home/Index", UriKind.Relative));
-//            return CreatedAtRoute();
+            //            return CreatedAtRoute();
         }
 
         // DELETE: api/Stars/5

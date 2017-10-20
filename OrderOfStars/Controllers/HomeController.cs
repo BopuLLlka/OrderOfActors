@@ -16,7 +16,7 @@ namespace OrderOfStars.Controllers
             return View();
         }
 
-        private OrderOfStarsBaseContext db = new OrderOfStarsBaseContext();
+       // private OrderOfStarsContext db = new OrderOfStarsContext();
 
       
 

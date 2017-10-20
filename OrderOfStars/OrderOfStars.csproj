@@ -268,17 +268,13 @@
     <Compile Include="Models\CreateRoleModel.cs" />
     <Compile Include="Models\EditRoleModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\OrderOfStarsBaseContext.cs" />
+    <Compile Include="Models\OrderOfStarsContext.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\Stars.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Start\Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\database.mdf" />
-    <Content Include="App_Data\database_log.ldf">
-      <DependentUpon>database.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\datepicker.css" />
@@ -326,6 +322,7 @@
     <Content Include="Views\Admin\AdminPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
     <Folder Include="Views\Temp\" />
   </ItemGroup>

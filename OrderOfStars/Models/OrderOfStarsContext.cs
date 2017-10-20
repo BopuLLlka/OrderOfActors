@@ -1,8 +1,12 @@
-﻿using System.Data.Entity;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+
 namespace OrderOfStars.Models
 {
-    public class OrderOfStarsBaseContext : DbContext
+    public class OrderOfStarsContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -11,11 +15,10 @@ namespace OrderOfStars.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public OrderOfStarsBaseContext() : base("name=OrderOfStarsBaseContext")
+        public OrderOfStarsContext() : base("name=OrderOfStarsContext")
         {
         }
 
-        
-        public DbSet<OrderOfStars.Models.Stars> Stars { get; set; }
+        public System.Data.Entity.DbSet<OrderOfStars.Models.Stars> Stars { get; set; }
     }
 }
