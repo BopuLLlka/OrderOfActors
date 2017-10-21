@@ -1,39 +1,22 @@
 ﻿@model Tuple<List<ApplicationUser>, List<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>> 
 
-@*<form id="starForm" action="javascript:void(null);" onsubmit="call()" >
-    <select name="userName">
-        @foreach (var item in Model.Item1)
-        {
-            <option value="@item.UserName">@item.UserName</option>
-        }
-    </select>
-    <select name="roleName">
-        <option value="empty">Без роли</option>
-        @foreach (var item in Model.Item2)
-        {
-            <option value="@item.Name">@item.Name</option>
-        }
-    </select>
-    <button type="submit">Назначить роль</button>
-</form>*@
-
-<div>
+<div id="mainContent">
     @using (Ajax.BeginForm("AddRoleToUser", new AjaxOptions { UpdateTargetId = "results" }))
     {
-        <select name="userName">
+        <select id="userName" name="userName">
             @foreach (var item in Model.Item1)
             {
                 <option value="@item.UserName">@item.UserName</option>
             }
         </select>
-        <select name="roleName">
+        <select id="roleName" name="roleName">
             <option value="empty">Без роли</option>
             @foreach (var item in Model.Item2)
             {
                 <option value="@item.Name">@item.Name</option>
             }
         </select>
-        <button type="submit">Назначить роль</button>
+        <button class="myBtn btn-dark btn addRoleBtn" type="submit">Назначить</button>
     }
    
     <div id="results"></div>

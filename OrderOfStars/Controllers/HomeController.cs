@@ -15,10 +15,5 @@ namespace OrderOfStars.Controllers
             ViewBag.Title = "Home Page";
             return View();
         }
-
-       // private OrderOfStarsContext db = new OrderOfStarsContext();
-
-      
-
     }
 }

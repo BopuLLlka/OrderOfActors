@@ -18,35 +18,40 @@ namespace OrderOfStars.Controllers
     public class AdminController : Controller
     {
         private ApplicationContext db = new ApplicationContext();
-
+        /// <summary>
+        /// Вьюшка с админ панелью
+        /// </summary>
         [Authorize(Roles ="Admin")]
         // GET: Admin
         public ActionResult AdminPanel()
         {
             return View();
         }
+        /// <summary>
+        /// Вьюшка с добавлением Звезды
+        /// </summary>
         [Authorize(Roles = "Admin")]
         public ActionResult CreateStar()
         {
             return View();
         }
-
-        //private ApplicationRoleManager RoleManager
-        //{
-        //    get
-        //    {
-        //        return HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>();
-        //    }
-        //}
-        //private ApplicationUserManager UserManager
-        //{
-        //    get
-        //    {
-        //        return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-        //    }
-        //}
+        /// <summary>
+        /// Подключаем БД для работы с пользователями и ролями
+        /// </summary>
         ApplicationContext context = new ApplicationContext();
-        //[Authorize(Roles = "Admin")]
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+        }
+        /// <summary>
+        /// Возвращает вьюшку с селектами в которых 
+        /// содержатся все пользователи и все роли, пока так.
+        /// </summary>
+        /// <returns>Передаются лист пользователей и лист ролей</returns>
+        [Authorize(Roles = "Admin")]
         public ActionResult UsersAndRoles()
         {
             
@@ -55,22 +60,17 @@ namespace OrderOfStars.Controllers
             var tuple = new Tuple<List<ApplicationUser>,  List<IdentityRole>>(allUsers, allRoles);
             return View(tuple);
         }
-
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-        }
-
+        /// <summary>
+        /// Добавляет пользователю роль и возвращает частичное представление в ajax
+        /// </summary>
+        /// <param name="userName">Имя пользователя из селекта</param>
+        /// <param name="roleName">Имя роли из селекта</param>
+        /// <returns>Возвращает текст с ошибкой или сообщающий об успехе</returns>
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult AddRoleToUser(string userName, string roleName)
         {
-           // var roleManager = new RolesController().RoleManager;
-          //  var userManager = new AccountController().UserManager;
-           // ApplicationRole role = roleManager.FindByName(roleName);
-            ApplicationUser user = UserManager.FindByEmail(userName);
+           ApplicationUser user = UserManager.FindByEmail(userName);
            try { 
                 UserManager.AddToRole(user.Id, roleName);
             }
@@ -78,10 +78,7 @@ namespace OrderOfStars.Controllers
             {
                 return PartialView(new ErrorModel() { ErrorText = "Роль не добавнлена" });
             }
-
-            //string sum = "ИМЯ ЮЗЕРА=" + user.Id.ToString() + "ИМЯ РОЛИ=" + role.Id.ToString();
             return PartialView(new ErrorModel() {ErrorText="Пользователю: "+userName+" добавлена роль: "+roleName});
         }
-
     }
 }
