@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Security.Claims;
 using Microsoft.AspNet.Identity.EntityFramework;
+using AspNetIdentityApp.Controllers;
 
 namespace OrderOfStars.Controllers
 {
@@ -30,13 +31,20 @@ namespace OrderOfStars.Controllers
             return View();
         }
 
-        private ApplicationRoleManager RoleManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>();
-            }
-        }
+        //private ApplicationRoleManager RoleManager
+        //{
+        //    get
+        //    {
+        //        return HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>();
+        //    }
+        //}
+        //private ApplicationUserManager UserManager
+        //{
+        //    get
+        //    {
+        //        return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+        //    }
+        //}
         ApplicationContext context = new ApplicationContext();
         //[Authorize(Roles = "Admin")]
         public ActionResult UsersAndRoles()
@@ -47,16 +55,32 @@ namespace OrderOfStars.Controllers
             var tuple = new Tuple<List<ApplicationUser>,  List<IdentityRole>>(allUsers, allRoles);
             return View(tuple);
         }
-        [HttpPost]
-        public ActionResult AddRoleToUser(string userName,string roleName)
+
+        public ApplicationUserManager UserManager
         {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+        }
 
-            ApplicationRole role = RoleManager.FindByName(roleName);
-            ApplicationUser user = context.Users.Find(userName);
+        [HttpPost]
+        public ActionResult AddRoleToUser(string userName, string roleName)
+        {
+           // var roleManager = new RolesController().RoleManager;
+          //  var userManager = new AccountController().UserManager;
+           // ApplicationRole role = roleManager.FindByName(roleName);
+            ApplicationUser user = UserManager.FindByEmail(userName);
+           try { 
+                UserManager.AddToRole(user.Id, roleName);
+            }
+            catch
+            {
+                return PartialView(new ErrorModel() { ErrorText = "Роль не добавнлена" });
+            }
 
-            string idd = role.Id + user.Id;
-
-            return View(idd);
+            //string sum = "ИМЯ ЮЗЕРА=" + user.Id.ToString() + "ИМЯ РОЛИ=" + role.Id.ToString();
+            return PartialView(new ErrorModel() {ErrorText="Пользователю: "+userName+" добавлена роль: "+roleName});
         }
 
     }

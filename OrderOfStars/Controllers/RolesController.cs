@@ -15,28 +15,25 @@ namespace OrderOfStars.Controllers
     public class RolesController : Controller
     {
 
-        private ApplicationRoleManager RoleManager
+        public ApplicationRoleManager RoleManager
         {
             get
             {
                 return HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>();
             }
         }
-        
-       
-
-       // [Authorize(Roles ="Admin")]
+        [Authorize(Roles ="Admin")]
         public ActionResult Index()
         {
             return View(RoleManager.Roles);
         }
-       // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
         }
         [HttpPost]
-      //  [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create(CreateRoleModel model)
         {
             if (ModelState.IsValid)

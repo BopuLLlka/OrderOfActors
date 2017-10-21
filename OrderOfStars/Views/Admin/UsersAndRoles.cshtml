@@ -1,25 +1,40 @@
 ﻿@model Tuple<List<ApplicationUser>, List<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>> 
 
-
-@Html.BeginForm("AddRoleToUser", "Admin", FormMethod.Get)
-{
-    <select>
+@*<form id="starForm" action="javascript:void(null);" onsubmit="call()" >
+    <select name="userName">
         @foreach (var item in Model.Item1)
         {
-            <option name="userName" value="@item.UserName">@item.UserName</option>
+            <option value="@item.UserName">@item.UserName</option>
         }
     </select>
-    <select>
-        <option name="roleName">Без роли</option>
+    <select name="roleName">
+        <option value="empty">Без роли</option>
         @foreach (var item in Model.Item2)
         {
-            <option name="roleName" value="@item.Name">@item.Name</option>
+            <option value="@item.Name">@item.Name</option>
         }
     </select>
     <button type="submit">Назначить роль</button>
-}
+</form>*@
 
-
-
-
-
+<div>
+    @using (Ajax.BeginForm("AddRoleToUser", new AjaxOptions { UpdateTargetId = "results" }))
+    {
+        <select name="userName">
+            @foreach (var item in Model.Item1)
+            {
+                <option value="@item.UserName">@item.UserName</option>
+            }
+        </select>
+        <select name="roleName">
+            <option value="empty">Без роли</option>
+            @foreach (var item in Model.Item2)
+            {
+                <option value="@item.Name">@item.Name</option>
+            }
+        </select>
+        <button type="submit">Назначить роль</button>
+    }
+   
+    <div id="results"></div>
+</div>

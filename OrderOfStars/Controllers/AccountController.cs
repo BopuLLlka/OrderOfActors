@@ -64,7 +64,7 @@ namespace AspNetIdentityApp.Controllers
         }
 
 
-        private ApplicationUserManager UserManager
+        public ApplicationUserManager UserManager
         {
             get
             {
