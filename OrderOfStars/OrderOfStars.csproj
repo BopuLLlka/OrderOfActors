@@ -237,7 +237,6 @@
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\StarCardController.cs" />
     <Compile Include="Controllers\StarsController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -267,6 +266,7 @@
     <Compile Include="Models\EditRoleModel.cs" />
     <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\OrderOfStarsContext.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\Stars.cs" />
@@ -323,6 +323,7 @@
     <Content Include="Views\Admin\AdminPanel.cshtml" />
     <Content Include="Views\Admin\UsersAndRoles.cshtml" />
     <Content Include="Views\Admin\AddRoleToUser.cshtml" />
+    <Content Include="Views\Admin\Orders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

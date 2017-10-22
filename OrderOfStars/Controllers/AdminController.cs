@@ -80,5 +80,13 @@ namespace OrderOfStars.Controllers
             }
             return PartialView(new ErrorModel() {ErrorText="Пользователю: "+userName+" добавлена роль: "+roleName});
         }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public ActionResult Orders()
+        {
+            return View();
+        }
+
     }
 }

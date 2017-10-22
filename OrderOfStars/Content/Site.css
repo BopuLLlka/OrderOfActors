@@ -205,6 +205,26 @@ footer {
     width: 100%;
     border: 1px solid black;
 }
+#actionInfoContainer {
+    background-color: white;
+    border-radius: 4px;
+    margin-top: 5px;
+    padding: 5px;
+    width: 100%;
+    border: 1px solid black;
+}
+#starTime{
+    
+    text-align:center;
+    width:calc(50% - 1px);
+    float:left;
+}
+#starPrice {
+    border-left: 1px solid black;
+    text-align: center;
+    width: calc(50% + 1px);
+    float: right;
+}
 @media(min-width:0px) {
     #orderContainer {
         margin-top: 5px;

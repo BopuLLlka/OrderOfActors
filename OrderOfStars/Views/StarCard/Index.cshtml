@@ -9,7 +9,9 @@
             function (json) {
                 var viewModel = {
                     name: json.FirstName + " " + json.LastName,
-                    description: json.Description
+                    description: json.Description,
+                    time: "Время выступления: "+"2:30",
+                    price: "Цена выступления: "+"63000р."
                 }
                 ko.applyBindings(viewModel);
             });
@@ -38,8 +40,12 @@
 <script src="~/Scripts/datepicker.js"></script>
 
 <div id="mainContent">
-    <div id='fullStarCardName' data-bind="text:name" class="titleText"></div>
-    <div id='fullStarCardDescription' data-bind="text:description"></div>
+    <div id="fullStarCardName" data-bind="text:name" class="titleText"></div>
+    <div id="actionInfoContainer">
+        <div id="starTime" data-bind="text:time"></div>
+        <div id="starPrice" data-bind="text:price"></div>
+    </div>
+    <div id="fullStarCardDescription" data-bind="text:description"></div>
     <form id="orderContainer">
             <p id="orderTitle" class="titleText">Заказать выступление</p>
             <br />
@@ -52,11 +58,11 @@
         </div>
         <div id="date">
             <p class="orderText">Дата выступления:</p>
-            <input class="myPicker" placeholder="Выберите дату выступления..."></input>
+            <input name="date" т class="myPicker" placeholder="Выберите дату выступления..."></input>
         </div>
         <div id="time">
-            <p class="orderText">Время выступления:</p>
-            <input class="timePicker" placeholder="Выберите время начала выступления..."></input>
+            <p class="orderText">Время начала:</p>
+            <input name="time" class="timePicker" placeholder="Выберите время начала выступления..."></input>
         </div>
         <div id="orderBtnContainer">
             <button type="submit" class="btn myBtn btn-dark">Заказать</button>
