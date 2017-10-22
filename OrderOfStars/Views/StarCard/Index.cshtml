@@ -1,6 +1,9 @@
 ﻿@model int
 <script>
+
+
     $(document).ready(function () {
+  
         //Call EmpDetails jsonResult Method
         $.getJSON("/api/Stars/@Model",
             function (json) {
@@ -10,30 +13,55 @@
                 }
                 ko.applyBindings(viewModel);
             });
-        $('.myPicker').datepicker({
-            // Можно выбрать тольо даты, идущие за сегодняшним днем, включая сегодня
-            minDate: new Date()
-        })
+        
+        $(".myPicker").flatpickr(
+            {
+                dateFormat: "d.m.Y",
+                minDate: "today",
+                maxDate: new Date().fp_incr(300),
+                "locale": "ru",
+            }
+        );
+        $(".timePicker").flatpickr(
+            {
+                enableTime: true,
+                noCalendar: true,
+
+                enableSeconds: false, // disabled by default
+
+                time_24hr: true
+            }
+        );
     });
 </script>
 <link href="~/Content/datepicker.css" rel="stylesheet" type="text/css">
 <script src="~/Scripts/datepicker.js"></script>
 
 <div id="mainContent">
-    <div id='fullStarCardName' data-bind="text:name"></div>
+    <div id='fullStarCardName' data-bind="text:name" class="titleText"></div>
     <div id='fullStarCardDescription' data-bind="text:description"></div>
-    <div id="orderContainer">
-        <div id="datePickerContainer">
-            <p>Выберите дату:</p>
+    <form id="orderContainer">
+            <p id="orderTitle" class="titleText">Заказать выступление</p>
             <br />
-            <div class="datepicker-here myPicker"></div>
+        <div id="city">
+            <p class="orderText">Ваш город:</p>
+            <select name="city">
+                <option value="Voronezj">Воронеж</option>
+                <option value="Moscow">Москва</option>
+            </select>
         </div>
-        <div id="timePickerContainer">
-            <p>Выберите время:</p>
-            <br />
-            <div>Тут будет выбор времени!!!</div>
+        <div id="date">
+            <p class="orderText">Дата выступления:</p>
+            <input class="myPicker" placeholder="Выберите дату выступления..."></input>
         </div>
-    </div>
+        <div id="time">
+            <p class="orderText">Время выступления:</p>
+            <input class="timePicker" placeholder="Выберите время начала выступления..."></input>
+        </div>
+        <div id="orderBtnContainer">
+            <button type="submit" class="btn myBtn btn-dark">Заказать</button>
+        </div>
+            </form>
 </div>
 
 
