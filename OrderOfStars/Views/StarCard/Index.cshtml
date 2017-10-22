@@ -1,17 +1,17 @@
 ﻿@model int
 <script>
 
-
     $(document).ready(function () {
   
         //Call EmpDetails jsonResult Method
         $.getJSON("/api/Stars/@Model",
             function (json) {
                 var viewModel = {
+                    id: json.Id,
                     name: json.FirstName + " " + json.LastName,
                     description: json.Description,
-                    time: "Время выступления: "+"2:30",
-                    price: "Цена выступления: "+"63000р."
+                    time: "Время выступления: " + json.Time,
+                    price: "Цена выступления: " + json.Price + "р."
                 }
                 ko.applyBindings(viewModel);
             });
@@ -46,28 +46,29 @@
         <div id="starPrice" data-bind="text:price"></div>
     </div>
     <div id="fullStarCardDescription" data-bind="text:description"></div>
-    <form id="orderContainer">
-            <p id="orderTitle" class="titleText">Заказать выступление</p>
+    <form id="orderContainer" action="/api/OrderModels" method="post">
+        <input name="StarId" data-bind="attr:{value:id}" hidden >
+        <p id="orderTitle" class="titleText">Заказать выступление</p>
             <br />
         <div id="city">
             <p class="orderText">Ваш город:</p>
-            <select name="city">
+            <select name="City">
                 <option value="Voronezj">Воронеж</option>
                 <option value="Moscow">Москва</option>
             </select>
         </div>
         <div id="date">
             <p class="orderText">Дата выступления:</p>
-            <input name="date" т class="myPicker" placeholder="Выберите дату выступления..."></input>
+            <input type="text" name="Date" required class="myPicker" placeholder="Выберите дату выступления...">
         </div>
         <div id="time">
             <p class="orderText">Время начала:</p>
-            <input name="time" class="timePicker" placeholder="Выберите время начала выступления..."></input>
+            <input type="text" class="timePicker" name="Time" required  placeholder="Выберите время начала выступления...">
         </div>
         <div id="orderBtnContainer">
             <button type="submit" class="btn myBtn btn-dark">Заказать</button>
         </div>
-            </form>
+    </form>
 </div>
 
 

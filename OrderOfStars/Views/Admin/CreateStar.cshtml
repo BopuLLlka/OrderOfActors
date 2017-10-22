@@ -1,100 +1,49 @@
-﻿@*<script type="text/javascript">
+﻿<script>
     $(document).ready(function () {
 
-        function resizeFunct() {
-            var buttonHeight = $('.chBtn').height();
-            var buttonContainer = $('.choiceButtons');
-            var height = $('.registrationWelcomeText').height();
-            buttonContainer.css("margin-top", height / 2 + buttonHeight - 15);
-        };
-       
-
-        resizeFunct();
-
-        $(window).resize(function () {
-            resizeFunct();
-        });
-        $('#starBtn').click(function () {
-            $('#choiceContainer').css("display", "none");
-            $('#starForm').css("display", "block");
-            $('#customerForm').css("display", "none");
-           
-        });
-        $('#customerBtn').click(function () {
-            $('#choiceContainer').css("display", "none");
-            $('#starForm').css("display", "none");
-            $('#customerForm').css("display", "block");
-            
+        $(function () {
+            $('#addStarTimePicker').timepicker(
+                {
+                    timeFormat: 'h:mm ',
+                    interval: 30,
+                    minTime: '1:00',
+                    maxTime: '5:00',
+                    defaultTime: '2:00',
+                    startTime: '1:00',
+                    dynamic: false,
+                    dropdown: true,
+                    scrollbar: true
+                });
         });
     });
 </script>
 
-<script>
-
-</script>
-
-<div id="choiceContainer">
-    <p class="registrationWelcomeText">Добро пожаловать на сайт.<br>Если Вы звезда, то вам нужно зарегистрироваться и указать своё расписание,чтобы Вас могли выбрать.<br>Если Вы заказчик, то Вам нужно зарегистрироваться, для возможности заказывать звузду.</p>
-    <div class="choiceButtons">
-        <button id="starBtn" class=" btn-outline-dark chBtn">Я звезда</button>
-        <button id="customerBtn" class=" btn-outline-dark chBtn">Я заказчик</button>
+<div id="mainContent">
+    <form id="starForm" action="/api/Stars" method="Post">
+        <div class="form-group">
+            <label class="form-control-label" for="firstName">Имя:</label>
+            <input name="FirstName" required type="text" class="form-control" id="firstName" placeholder="Ваше имя">
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="lastName">Фамилия:</label>
+            <input name="LastName" required type="text" class="form-control" id="lastName" placeholder="Ваша фамилия">
+        </div>
+        <div class="form-group">
+            <label for="regEmail">E-Mail:</label>
+            <input name="EMail" required type="email" class="form-control" id="regEmail" placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+            <label for="time">Продолжительность выступления:</label>
+            <input type="text" name="Time" class="form-control" id="addStarTimePicker" required placeholder="2:00">
+        </div>
+        <div class="form-group">
+            <label for="price">Цена выступления:</label>
+            <div class="form-control clearMarginAndPadding" ><i class="fa fa-ruble rubIcon" style="font-size:24px"></i><input type="number" value="1000" min="100" step="100" name="Price" required id="addStarPrice" placeholder="5000р"></div>
+        </div>
+        <div class="form-group">
+            <label for="descriptionTextArea">Описание:</label>
+            <textarea name="Description" required class="form-control" id="descriptionTextArea" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-outline-dark myBtn">Зарегистрироваться</button>
+    </form>
     </div>
-</div>*@
-
-<form id="starForm" action="/api/Stars" method="post">
-
-    <div class="form-group">
-        <label class="form-control-label" for="firstName">Ваше имя:</label>
-        <input name="FirstName" required type="text" class="form-control" id="firstName" placeholder="Ваше имя">
-    </div>
-    <div class="form-group">
-        <label class="form-control-label" for="lastName">Ваша фамилия:</label>
-        <input name="lastName" type="text" class="form-control" id="lastName" placeholder="Ваша фамилия">
-    </div>
-    <div class="form-group">
-        <label for="regEmail">Ваш E-Mail:</label>
-        <input name="EMail" required type="email" class="form-control" id="regEmail" placeholder="name@example.com">
-    </div>
-    <div class="form-group">
-        <label for="descriptionTextArea">Описание:</label>
-        <textarea name="Description" required class="form-control" id="descriptionTextArea" rows="3"></textarea>
-    </div>
-    <button type="submit" class="btn btn-outline-dark myBtn">Зарегистрироваться</button>
-</form>
-
-@*<form id="customerForm" action="/api/Customer" method="post">
-
-    <div class="form-group">
-        <label class="form-control-label" for="firstName">Ваше имя:</label>
-        <input name="FirstName" required type="text" class="form-control" id="firstName" placeholder="Ваше имя">
-    </div>
-    <div class="form-group">
-        <label class="form-control-label" for="secondName">Ваша фамилия:</label>
-        <input name="SecondName" type="text" class="form-control" id="secondName" placeholder="Ваша фамилия">
-    </div>
-    <div class="form-group">
-        <label for="regEmail">Ваш E-Mail:</label>
-        <input name="EMail" required type="email" class="form-control" id="regEmail" placeholder="name@example.com">
-    </div>
-    <div class="form-group">
-        <label for="inputPassword1">Ваш пароль:</label>
-        <input required type="password" id="inputPassword1" class="form-control" aria-describedby="passwordHelpBlock">
-        <small id="passwordHelpBlock" class="form-text text-muted">
-            Ваш пароль может быть длинной 8-20 симолов, содержать латинские буквы и числа, и не должен иметь пробелов и специальных символов.
-        </small>
-    </div>
-    <div class="form-group">
-        <label required for="inputPassword2">Повторите пароль:</label>
-        <input type="password" id="inputPassword2" class="form-control" aria-describedby="passwordHelpBlock">
-        <small id="passwordHelpBlock" class="form-text text-muted">
-            Ваш пароль может быть длинной 8-20 симолов, содержать латинские буквы и числа, и не должен иметь пробелов и специальных символов.
-        </small>
-    </div>
-    <div class="form-group">
-        <label class="form-control-label" for="organizationName">Назвние организации:</label>
-        <input name="organizationName" type="text" class="form-control" id="organizationName" placeholder="Назвние организации">
-    </div>
-    <button type="submit" class="btn btn-outline-dark myBtn">Зарегистрироваться</button>
-</form>*@
-
-

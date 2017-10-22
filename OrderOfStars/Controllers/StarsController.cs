@@ -30,7 +30,8 @@ namespace OrderOfStars.Controllers
         public JsonResult<Stars> GetStars(int id)
         {
             //Stars star = db.Stars.Find(0); хз почему это не работает
-            Stars star = db.Stars.ToList()[id];
+            Stars star = db.Stars.Find(id);
+            //Stars star = db.Stars.ToList()[id];
 
             if (star == null)
             {

@@ -234,6 +234,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderModelsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\StarCardController.cs" />
     <Compile Include="Controllers\StarsController.cs" />
@@ -255,6 +256,10 @@
     <Compile Include="Migrations\201710142041019_Stars.cs" />
     <Compile Include="Migrations\201710142041019_Stars.Designer.cs">
       <DependentUpon>201710142041019_Stars.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710221606512_AddPriceAndTimeToStars.cs" />
+    <Compile Include="Migrations\201710221606512_AddPriceAndTimeToStars.Designer.cs">
+      <DependentUpon>201710221606512_AddPriceAndTimeToStars.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationContext.cs" />
@@ -361,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710142041019_Stars.resx">
       <DependentUpon>201710142041019_Stars.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710221606512_AddPriceAndTimeToStars.resx">
+      <DependentUpon>201710221606512_AddPriceAndTimeToStars.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

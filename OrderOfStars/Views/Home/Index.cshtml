@@ -6,8 +6,6 @@
             <p class="starDescription" data-bind="text: starDescription"></p>
         </div>
     </div>
-
-
 <script>
     function myFunction(index) {
         var url = "StarCard/Index/" + index;
@@ -32,7 +30,7 @@
                             description = json[i].Description
 
                         self.star.push({
-                            id:i,
+                            id: json[i].Id,
                             name: json[i].FirstName + " " + json[i].LastName,
                             starDescription: description
 
