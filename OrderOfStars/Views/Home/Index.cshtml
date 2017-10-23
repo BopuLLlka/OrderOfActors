@@ -1,11 +1,10 @@
-﻿
-    <div id="mainContent" data-bind="foreach: star">
-        <div class="starCard" data-bind="click: function () { myFunction(id)  }">
-            <img class="starImg" />
-            <p class="starName" data-bind="text: name"></p>
-            <p class="starDescription" data-bind="text: starDescription"></p>
-        </div>
-    </div>
+﻿<div id="mainContent" data-bind="foreach: star">
+   <div class="starCard" data-bind="click: function () { myFunction(id)  }">
+       <img class="starImg" />
+         <p class="starName" data-bind="text: name"></p>
+         <p class="starDescription" data-bind="text: starDescription"></p>
+   </div>
+</div>
 <script>
     function myFunction(index) {
         var url = "StarCard/Index/" + index;

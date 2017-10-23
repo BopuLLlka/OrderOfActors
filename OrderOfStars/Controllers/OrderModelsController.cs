@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using OrderOfStars.Models;
+using System.Web.Http.Results;
 
 namespace OrderOfStars.Controllers
 {
@@ -17,9 +18,9 @@ namespace OrderOfStars.Controllers
         private OrderOfStarsContext db = new OrderOfStarsContext();
 
         // GET: api/OrderModels
-        public IQueryable<OrderModel> GetOrderModels()
+        public JsonResult<DbSet<OrderModel>> GetOrderModels()
         {
-            return db.OrderModels;
+            return Json(db.OrderModels);
         }
 
         // GET: api/OrderModels/5
@@ -72,17 +73,17 @@ namespace OrderOfStars.Controllers
 
         // POST: api/OrderModels
         [ResponseType(typeof(OrderModel))]
-        public IHttpActionResult PostOrderModel(OrderModel orderModel)
+        public RedirectResult PostOrderModel(OrderModel orderModel)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                 return Redirect(new Uri("/StarCard/Index/"+orderModel.StarId, UriKind.Relative));
             }
 
             db.OrderModels.Add(orderModel);
             db.SaveChanges();
-            
-            return CreatedAtRoute("DefaultApi", new { id = orderModel.Id }, orderModel);
+
+            return Redirect(new Uri("/Home/Index", UriKind.Relative));
         }
 
         // DELETE: api/OrderModels/5

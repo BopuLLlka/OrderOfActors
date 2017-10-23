@@ -26,9 +26,10 @@
         @{
             if (User.Identity.IsAuthenticated)
             {
-                <div class="headerUserName dropdownHover">
+                <div class="headerMenu" >Меню</div>
+                <div class="dropdownHover headerUserName">
                     <div class="headerHoverText">@User.Identity.Name</div>
-                    <div class="dropdownHover-content" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdownHover-content dropDownMenuContent" aria-labelledby="dropdownMenuButton">
                         <div>Личный кабинет</div>
                         @if(@Roles.IsUserInRole("Admin"))
                         { 

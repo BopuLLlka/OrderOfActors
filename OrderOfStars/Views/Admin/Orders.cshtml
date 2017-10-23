@@ -1,7 +1,30 @@
-﻿
-@{
-    ViewBag.Title = "Orders";
-}
+﻿<div id="mainContent" data-bind="foreach: order">
+    <div class="orderCard">
+        <div><p>Id звезды: </p><p class="orderStarId" data-bind="text:starId"></p></div>
+        <div><p>Город: </p><p class="orderCity" data-bind="text:city"></p></div>
+        <div><p>Дата: </p><p class="orderDate" data-bind="text:date"></p></div>
+        <div><p>Время: </p><p class="orderTime" data-bind="text:time"></p></div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $.getJSON("/api/OrderModels",
+            function (json) {
+                function ViewModel() {
+                    var self = this;
+                    self.order = ko.observableArray([]);
 
-<h2>Orders</h2>
+                    for (var i = 0; i < json.length; i++) {
+                        self.order.push({
+                            starId: json[i].StarId,
+                            city: json[i].City,
+                            date: json[i].Date,
+                            time: json[i].Time
 
+                        });
+                    }
+                };
+                ko.applyBindings(new ViewModel);
+            });
+    });
+</script>
