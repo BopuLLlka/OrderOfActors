@@ -88,7 +88,7 @@ namespace OrderOfStars.Controllers
             db.Stars.Add(stars);
             db.SaveChanges();
 
-            return Redirect(new Uri("/Home/Index", UriKind.Relative));
+            return Redirect(new Uri("../", UriKind.Relative));
             //            return CreatedAtRoute();
         }
 

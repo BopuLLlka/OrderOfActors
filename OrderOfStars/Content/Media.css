@@ -1,0 +1,313 @@
+﻿/*----------Начало Шапки----------*/
+@media(min-width:0px) {
+    #header {
+        background-color: darkorange;
+        width: 100%;
+        min-width: 400px;
+        height: 75px;
+        border-bottom: 1px black solid;
+    }
+    .logo {
+        margin-top:12px;
+        width:280px;
+        background-image: url("/Content/Images/logo-min.png");
+    }
+
+    .headerMenu {
+        border-left: 1px solid black;
+        text-align: center;
+        font-size: 18px;
+        padding-top: 20px;
+        cursor: pointer;
+        height: 100%;
+        width: 70px;
+        float: right;
+    }
+    .dropdownHover-content {
+        position: absolute;
+        width: 100%;
+        border-left: 0px;
+    }
+    .headerMenu:hover {
+       background-color: orange;
+    }
+    .headerHoverText {
+        display: none;
+    }
+}
+
+@media(min-width:500px) {
+    .headerMenu {
+        display: none;
+    }
+
+    .logo {
+        background-size: auto;
+        display: block;
+        margin-top: 5px;
+        margin-left: 5px;
+        float: left;
+        width: 360px;
+        height: 62px;
+        background-repeat: no-repeat;
+        background-image: url("/Content/Images/logo.png");
+    }
+
+    #header {
+        background-color: darkorange;
+        width: 100%;
+        min-width: 400px;
+        height: 75px;
+        border-bottom: 1px black solid;
+    }
+
+    .headerHoverText {
+        display: block;
+        box-sizing: border-box;
+        padding-top: 15px;
+        padding-left: 5px;
+        font-size: 20px;
+        width: 23%;
+        height: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        border-left: 1px solid black;
+    }
+    .dropdownHover-content {
+        position: fixed;
+        width: 100%;
+        border-left: 0px;
+    }
+    .dropdownHover {
+        width:22%;
+        box-sizing: border-box;
+        min-width: 100px;
+        max-width:300px;
+        position: relative;
+        float: right;
+        display: inline-block;
+    }
+
+    .headerHoverText {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media(min-width:700px) {
+    .logo {
+        background-image: url("/Content/Images/logo.png");
+    }
+
+    #header {
+        background-color: darkorange;
+        width: 100%;
+        min-width: 400px;
+        height: 75px;
+        border-bottom: 1px black solid;
+    }
+
+    .headerHoverText {
+        box-sizing: border-box;
+        padding: 15px;
+        font-size: 25px;
+        height: 100%;
+        border-left: 1px solid black;
+    }
+    .dropdownHover-content {
+        position: absolute;
+        width: 100%;
+        border-left: 1px solid black;
+    }
+    .dropdownHover {
+        box-sizing:border-box;
+        min-width:300px;
+        position: relative;
+        float:right;
+        display: inline-block;
+    }
+}
+/*----------Конец Шапки----------*/
+
+/*---------Карточки звёзд--------*/
+@media(min-width:0px) {
+    .starCard {
+        border-radius: 6px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 450px;
+        background-color: white;
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+    .starImg {
+        width: 100%;
+        height: 300px;
+        border: 1px solid lightgrey;
+        border-radius: 6px;
+        content: url("Images/noAva.png");
+    }
+
+    .starName {
+        margin-top: 5px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 0px;
+        width: 100%;
+    }
+
+    .starDescription {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+        padding: 5px;
+        width: 100%;
+        height: 80px;
+        word-wrap: break-word;
+    }
+}
+
+@media(min-width:500px) {
+    .starCard {
+        border-radius: 6px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 200px;
+        background-color: white;
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+    .starImg {
+        width: 150px;
+        height: 100%;
+        border: 1px solid lightgrey;
+        border-radius: 6px;
+        content: url("Images/noAva.png");
+    }
+
+    .starName {
+        text-align: left;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 0px;
+        width: calc(100% - 150px);
+        padding-left: 10px;
+    }
+
+    .starDescription {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: left;
+        height: 110px;
+        padding: 10px;
+        width: calc(100% - 150px);
+        word-wrap: break-word;
+    }
+}
+@media(min-width:1000px) {
+    .starCard {
+        border-radius: 6px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 200px;
+        background-color: white;
+        border: 1px solid black;
+        padding: 10px;
+    }
+    .starImg {
+        width: 150px;
+        height: 100%;
+        border: 1px solid lightgrey;
+        border-radius: 6px;
+        content: url("Images/noAva.png");
+    }
+    .starName {
+        font-size: 18px;
+        font-weight: 600;
+        width: calc(100% - 150px);
+        padding-left: 10px;
+    }
+    .starDescription {
+        padding: 10px;
+        width: calc(100% - 150px);
+        word-wrap: break-word;
+    }
+}
+/*============Home Page END=============*/
+
+@media(min-width:0px) {
+    #orderContainer {
+        margin-top: 5px;
+        background-color: white;
+        border-radius: 4px;
+        text-align: center;
+        border: 1px solid black;
+        width: 100%;
+        float: left
+    }
+    #orderContainer * {
+        box-sizing: border-box;
+        width: calc(100% - 20px);
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        border-radius: 4px;
+        }
+    #orderTitle {
+        background-color: white;
+        width: 100%;
+        margin: 0px;
+        padding: 10px;
+        border-radius: 4px;
+        text-align: center;
+        border-bottom: 1px solid black;
+    }
+}
+@media(min-width:1000px) {
+    #orderContainer div {
+        box-sizing: border-box;
+        width: calc(100% - 20px);
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        border-radius: 4px;
+    }
+    #orderContainer div > * {
+        box-sizing: border-box;
+        width: 46%;
+        height: 38px;
+        border-radius: 4px;
+    }
+    body {
+        font-size: 18px;
+    }
+    .titleText {
+        font-size: 23px;
+    }
+    #orderContainer div > * {
+        height: 43px;
+    }
+    .btn {
+        font-size: 18px;
+    }
+}
+@media(min-width:1300px) {
+    body {
+        font-size: 20px;
+    }
+    .titleText {
+        font-size: 25px;
+    }
+    #orderContainer div > * {
+        height: 45px;
+    }
+    .btn {
+        font-size: 20px;
+    }
+}
+

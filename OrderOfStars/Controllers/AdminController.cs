@@ -17,6 +17,10 @@ namespace OrderOfStars.Controllers
 {
     public class AdminController : Controller
     {
+        public ActionResult UploadPhoto()
+        {
+            return View();
+        }
         private ApplicationContext db = new ApplicationContext();
         /// <summary>
         /// Вьюшка с админ панелью
