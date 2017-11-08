@@ -1,6 +1,6 @@
 ﻿<div id="mainContent" data-bind="foreach: star">
    <div class="starCard" data-bind="click: function () { myFunction(id)  }">
-       <img class="starImg" data-bind="attr:{src:avatarPath}" />
+       <div class="imgCorrector"><img class="starImg" data-bind="attr:{src:avatarPath}" /></div>
          <p class="starName" data-bind="text: name"></p>
          <p class="starDescription" data-bind="text: starDescription"></p>
    </div>
@@ -21,13 +21,7 @@
                     self.star = ko.observableArray([]);
 
                     for (var i = 0; i < json.length; i++) {
-                        var description = "";
-
-                        if (json[i].Description.length > 180) 
-                            description = json[i].Description.substr(0, 180) + "...";
-                        else 
-                            description = json[i].Description
-
+                        var description = json[i].Description;
                         self.star.push({
                             id: json[i].Id,
                             name: json[i].FirstName + " " + json[i].LastName,

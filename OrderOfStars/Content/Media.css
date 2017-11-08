@@ -37,6 +37,51 @@
     .headerHoverText {
         display: none;
     }
+
+
+    .starCard {
+        display: inline-flex;
+        flex-direction: column;
+        align-items:center;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 450px;
+        background-color: white;
+        border: 1px solid black;
+        padding: 10px;
+    }
+    .imgCorrector {
+        
+        margin:0,auto;
+        display: flex;
+        align-items:center;
+       
+        overflow: hidden;
+        height: 300px;
+        width: 300px;
+        border: 1px solid lightgrey;
+        border-radius: 6px;
+    }
+
+    .starName {
+        margin-top: 5px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 0px;
+        width: 100%;
+    }
+
+    .starDescription {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+        padding: 5px;
+        width: 100%;
+        height: 80px;
+        word-wrap: break-word;
+    }
 }
 
 @media(min-width:640px) {
@@ -95,9 +140,9 @@
         float: right;
         display: inline-block;
     }
-        .dropdownHover.dropdownBtnHower {
-            display: none;
-        }
+    .dropdownHover.dropdownBtnHower {
+        display: none;
+    }
 
     .headerHoverText {
         width: 100%;
@@ -137,187 +182,147 @@
         float:right;
         display: inline-block;
     }
-}
-/*----------Конец Шапки----------*/
 
-/*---------Карточки звёзд--------*/
-@media(min-width:0px) {
+}
+@media(min-width:800px) {
     .starCard {
+        display: block;
+        overflow:hidden;
+       
         border-radius: 6px;
         margin-bottom: 10px;
         width: 100%;
-        height: 450px;
+        height: 325px;
         background-color: white;
         border: 1px solid black;
         padding: 10px;
     }
 
-    .starImg {
-        width: 100%;
+    .imgCorrector {
+        float: left;
+        display: flex;
+        align-content: center;
+        overflow: hidden;
         height: 300px;
+        width: 300px;
         border: 1px solid lightgrey;
         border-radius: 6px;
     }
 
     .starName {
-        margin-top: 5px;
-        text-align: center;
+        float:left;
+
         font-size: 18px;
         font-weight: 600;
-        margin-bottom: 0px;
-        width: 100%;
-    }
-
-    .starDescription {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        text-align: center;
-        padding: 5px;
-        width: 100%;
-        height: 80px;
-        word-wrap: break-word;
-    }
-}
-
-@media(min-width:500px) {
-    .starCard {
-        border-radius: 6px;
-        margin-bottom: 10px;
-        width: 100%;
-        height: 200px;
-        background-color: white;
-        border: 1px solid black;
-        padding: 10px;
-    }
-
-    .starImg {
-        width: 150px;
-        height: 100%;
-        border: 1px solid lightgrey;
-        border-radius: 6px;
-        
-    }
-
-    .starName {
-        text-align: left;
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 0px;
-        width: calc(100% - 150px);
+        width: calc(100% - 300px);
         padding-left: 10px;
     }
 
     .starDescription {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        text-align: left;
-        height: 110px;
+        float: left;
+        text-overflow:ellipsis;
         padding: 10px;
-        width: calc(100% - 150px);
+        height: 250px;
+        width: calc(100% - 300px);
         word-wrap: break-word;
     }
-}
-@media(min-width:1000px) {
-    .starCard {
-        border-radius: 6px;
-        margin-bottom: 10px;
-        width: 100%;
-        height: 200px;
-        background-color: white;
-        border: 1px solid black;
-        padding: 10px;
-    }
-    .starImg {
-        width: 150px;
-        height: 100%;
-        border: 1px solid lightgrey;
-        border-radius: 6px;
-        
-    }
-    .starName {
-        font-size: 18px;
-        font-weight: 600;
-        width: calc(100% - 150px);
-        padding-left: 10px;
-    }
-    .starDescription {
-        padding: 10px;
-        width: calc(100% - 150px);
-        word-wrap: break-word;
-    }
-}
-/*============Home Page END=============*/
 
-@media(min-width:0px) {
-    #orderContainer {
-        margin-top: 5px;
-        background-color: white;
-        border-radius: 4px;
-        text-align: center;
-        border: 1px solid black;
-        width: 100%;
-        float: left
+}
+    /*----------Конец Шапки----------*/
+
+    /*---------Карточки звёзд--------*/
+    @media(min-width:0px) {
     }
-    #orderContainer * {
-        box-sizing: border-box;
-        width: calc(100% - 20px);
-        margin-top: 5px;
-        margin-bottom: 5px;
-        margin-left: 10px;
-        margin-right: 10px;
-        border-radius: 4px;
+
+    @media(min-width:500px) {
+    }
+
+    @media(min-width:1000px) {
+    }
+    /*============Home Page END=============*/
+
+    @media(min-width:0px) {
+        #orderContainer {
+            margin-top: 5px;
+            background-color: white;
+            border-radius: 4px;
+            text-align: center;
+            border: 1px solid black;
+            width: 100%;
+            float: left
         }
-    #orderTitle {
-        background-color: white;
-        width: 100%;
-        margin: 0px;
-        padding: 10px;
-        border-radius: 4px;
-        text-align: center;
-        border-bottom: 1px solid black;
+
+            #orderContainer * {
+                box-sizing: border-box;
+                width: calc(100% - 20px);
+                margin-top: 5px;
+                margin-bottom: 5px;
+                margin-left: 10px;
+                margin-right: 10px;
+                border-radius: 4px;
+            }
+
+        #orderTitle {
+            background-color: white;
+            width: 100%;
+            margin: 0px;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+            border-bottom: 1px solid black;
+        }
     }
-}
-@media(min-width:1000px) {
-    #orderContainer div {
-        box-sizing: border-box;
-        width: calc(100% - 20px);
-        margin-top: 5px;
-        margin-bottom: 5px;
-        margin-left: 10px;
-        margin-right: 10px;
-        border-radius: 4px;
+
+    @media(min-width:1000px) {
+        #orderContainer div {
+            box-sizing: border-box;
+            width: calc(100% - 20px);
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+
+            #orderContainer div > * {
+                box-sizing: border-box;
+                width: 46%;
+                height: 38px;
+                border-radius: 4px;
+            }
+
+        body {
+            font-size: 18px;
+        }
+
+        .titleText {
+            font-size: 23px;
+        }
+
+        #orderContainer div > * {
+            height: 43px;
+        }
+
+        .btn {
+            font-size: 18px;
+        }
     }
-    #orderContainer div > * {
-        box-sizing: border-box;
-        width: 46%;
-        height: 38px;
-        border-radius: 4px;
+
+    @media(min-width:1300px) {
+        body {
+            font-size: 20px;
+        }
+
+        .titleText {
+            font-size: 25px;
+        }
+
+        #orderContainer div > * {
+            height: 45px;
+        }
+
+        .btn {
+            font-size: 20px;
+        }
     }
-    body {
-        font-size: 18px;
-    }
-    .titleText {
-        font-size: 23px;
-    }
-    #orderContainer div > * {
-        height: 43px;
-    }
-    .btn {
-        font-size: 18px;
-    }
-}
-@media(min-width:1300px) {
-    body {
-        font-size: 20px;
-    }
-    .titleText {
-        font-size: 25px;
-    }
-    #orderContainer div > * {
-        height: 45px;
-    }
-    .btn {
-        font-size: 20px;
-    }
-}
 

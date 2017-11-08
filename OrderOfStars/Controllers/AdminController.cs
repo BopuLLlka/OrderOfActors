@@ -14,6 +14,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using AspNetIdentityApp.Controllers;
 using System.Security.Cryptography;
 using System.Text;
+using ImageResizer;
+using System.Drawing;
 
 namespace OrderOfStars.Controllers
 {
@@ -22,7 +24,6 @@ namespace OrderOfStars.Controllers
         [HttpPost]
         public string Upload()
         {
-
             string fileHash = "";
             foreach (string file in Request.Files)
             {
@@ -46,8 +47,24 @@ namespace OrderOfStars.Controllers
                     }
                     fileHash = sBuilder.ToString();
 
+                    var path = "~/Content/Images/StarsImg/";
+                    upload.InputStream.Seek(0, System.IO.SeekOrigin.Begin);
+                    //Bitmap size = new Bitmap(upload.InputStream);
+                    //upload.InputStream.Seek(0, System.IO.SeekOrigin.Begin);
+                    string instructions = "maxwidth=300&maxheight=300";
+                
+
                     // сохраняем файл в папку Files в проекте
-                    upload.SaveAs(Server.MapPath("~/Content/Images/StarsImg/" + fileHash +".jpg"));
+                    ImageBuilder.Current.Build(
+                        new ImageJob(
+                        upload.InputStream,
+                        path + fileHash + ".jpg",
+                        new Instructions(instructions),
+                        false,
+                        false));
+                   
+
+                   // upload.SaveAs(Server.MapPath( path + fileHash +".jpg"));
                 }
             }
             return fileHash;
