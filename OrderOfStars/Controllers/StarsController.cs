@@ -11,6 +11,7 @@ using OrderOfStars.Models;
 using Newtonsoft.Json;
 using System.Web.Http.Results;
 using System.Net.Http;
+using System.Web;
 
 namespace OrderOfStars.Controllers
 {
@@ -21,7 +22,7 @@ namespace OrderOfStars.Controllers
         // GET: api/Stars
         public JsonResult<DbSet<Stars>> GetStars()
         {
-
+          
             return Json(db.Stars);
         }
 
@@ -80,10 +81,23 @@ namespace OrderOfStars.Controllers
         [ResponseType(typeof(Stars))]
         public RedirectResult PostStars(Stars stars)
         {
+            
+            //var file = stars.Upload;
+            //if(file!=null)
+            //{
+            //    db.ImgModels.Add(new ImgModel() { Id = stars.Id, Name = file.FileName, Path = "/123" });
+            //}
+            //db.ImgModels.Add( new ImgModel() { Name = "пусто",Path = "/Путенько" });
+            
+
+
             if (!ModelState.IsValid)
             {
                 return Redirect(new Uri("/Admin/AdminPanel", UriKind.Relative));
             }
+
+            // var file = starWithFile.File;
+            // db.ImgModels.Add(new ImgModel() { Id = starWithFile.Stars.Id, Name = file.FileName, Path = "/123" });
 
             db.Stars.Add(stars);
             db.SaveChanges();

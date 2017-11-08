@@ -12,14 +12,45 @@ using Microsoft.Owin.Security;
 using System.Security.Claims;
 using Microsoft.AspNet.Identity.EntityFramework;
 using AspNetIdentityApp.Controllers;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace OrderOfStars.Controllers
 {
     public class AdminController : Controller
     {
-        public ActionResult UploadPhoto()
+        [HttpPost]
+        public string Upload()
         {
-            return View();
+
+            string fileHash = "";
+            foreach (string file in Request.Files)
+            {
+                var upload = Request.Files[file];
+                if (upload != null)
+                {
+                    // получаем имя файла
+                    string fileName = System.IO.Path.GetFileName(upload.FileName);
+                    // Хэшируем картинку с добавлением рандомного числа
+                    Random rnd = new Random();
+                    int newRandomNumber = rnd.Next();
+                    var md5Hasher = MD5.Create();
+                    byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(fileName+newRandomNumber));
+                    // Создаем новый Stringbuilder (Изменяемую строку) для набора байт
+                    StringBuilder sBuilder = new StringBuilder();
+                    // Преобразуем каждый байт хэша в шестнадцатеричную строку
+                    for (int i = 0; i < data.Length; i++)
+                    {
+                        //указывает, что нужно преобразовать элемент в шестнадцатиричную строку длиной в два символа
+                        sBuilder.Append(data[i].ToString("x2"));
+                    }
+                    fileHash = sBuilder.ToString();
+
+                    // сохраняем файл в папку Files в проекте
+                    upload.SaveAs(Server.MapPath("~/Content/Images/StarsImg/" + fileHash +".jpg"));
+                }
+            }
+            return fileHash;
         }
         private ApplicationContext db = new ApplicationContext();
         /// <summary>

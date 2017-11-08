@@ -13,8 +13,6 @@ namespace OrderOfStars.Controllers
 
         public ActionResult Index(int id)
         {
-         
-          
             return View(id);
         }
     }

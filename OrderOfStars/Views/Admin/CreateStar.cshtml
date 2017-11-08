@@ -1,6 +1,71 @@
-﻿<script>
-    $(document).ready(function () {
+﻿<script type="text/javascript">
+    var filesExt = ['jpg', 'jpeg', 'png']; // массив расширений
 
+    var isImg = false;
+    var wasChange = false;
+    $('#imgUploadMessage').empty();
+
+    function uploadImg() {
+
+        // $('#fileUloadBtn').on('click', function (e) {
+       
+        if (isImg) {
+           
+           // e.preventDefault();
+            var files = document.getElementById('uploadFile').files;
+            if (files.length > 0) {
+                if (window.FormData !== undefined) {
+                    var data = new FormData();
+                    for (var x = 0; x < files.length; x++) {
+                        data.append("file" + x, files[x]);
+                    }
+                    
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("Upload", "Admin")',
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        success: function (result) {
+                            $('#fileNameHiddenSpan').attr({ "value": "/Images/StarsImg/" + result + ".jpg" });
+                            $('#starForm').submit();
+                        },
+                        error: function (xhr, status, p3) {
+                            alert(xhr.responseText);
+                        }
+                    });
+                } else {
+                    alert("Браузер не поддерживает загрузку файлов HTML5!");
+                }
+            }
+        }
+        else {
+            if (wasChange)
+                e.preventDefault();
+            else
+                $('#starForm').submit();
+        }
+       
+    };
+    $(document).ready(function () {
+        $('input[type=file]').change(function () {
+            wasChange = true;
+            var parts = $(this).val().split('.');
+            if (filesExt.join().search(parts[parts.length - 1]) != -1) {
+                isImg = true;
+                $('#imgUploadMessage').append('Картинка подходит');
+            } else {
+                isImg = false;
+                $('#imgUploadMessage').append('А это точно картинка? Поддерживаемые форматы: jpg, jpeg, png');
+            }
+        });
+       
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
         $(function () {
             $('#addStarTimePicker').timepicker(
                 {
@@ -19,14 +84,15 @@
 </script>
 
 <div id="mainContent">
-    <form id="starForm" action="/api/Stars" method="Post">
+  <form id="starForm" action="/api/Stars" method="post" >
+      <!--<form  action="/api/Stars" enctype="multipart/form-data" method="Post">--> 
         <div class="form-group">
             <label class="form-control-label" for="firstName">Имя:</label>
-            <input name="FirstName" required type="text" class="form-control" id="firstName" placeholder="Ваше имя">
+            <input name="FirstName" required type="text" class="form-control" id="firstName" placeholder="Имя">
         </div>
         <div class="form-group">
             <label class="form-control-label" for="lastName">Фамилия:</label>
-            <input name="LastName" required type="text" class="form-control" id="lastName" placeholder="Ваша фамилия">
+            <input name="LastName" required type="text" class="form-control" id="lastName" placeholder="Фамилия">
         </div>
         <div class="form-group">
             <label for="regEmail">E-Mail:</label>
@@ -44,6 +110,16 @@
             <label for="descriptionTextArea">Описание:</label>
             <textarea name="Description" required class="form-control" id="descriptionTextArea" rows="3"></textarea>
         </div>
-        <button type="submit" class="btn btn-outline-dark myBtn">Зарегистрироваться</button>
-    </form>
-    </div>
+        <div class="form-group">
+            <input type="file" name="upload" id="uploadFile"/>
+            <!--<button type="button" id="fileUloadBtn">Загрузить фото</button>-->
+            <p id="imgUploadMessage"></p>
+            <input type="text" id="fileNameHiddenSpan" name="AvatarPath" value="/Images/noAva.png">
+        </div>
+        <br />
+        <button type="button" onclick="uploadImg()" name="upload2" class="btn btn-outline-dark myBtn">Добавить</button>
+      </form>
+</div>
+
+
+

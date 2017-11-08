@@ -1,9 +1,11 @@
 ﻿<div id="mainContent" data-bind="foreach: star">
    <div class="starCard" data-bind="click: function () { myFunction(id)  }">
-       <img class="starImg" />
+       <img class="starImg" data-bind="attr:{src:avatarPath}" />
          <p class="starName" data-bind="text: name"></p>
          <p class="starDescription" data-bind="text: starDescription"></p>
    </div>
+
+   
 </div>
 <script>
     function myFunction(index) {
@@ -14,8 +16,6 @@
     $(document).ready(function () {
         $.getJSON("/api/Stars",
             function (json) {
-               
-
                 function ViewModel() {
                     var self = this;
                     self.star = ko.observableArray([]);
@@ -31,9 +31,9 @@
                         self.star.push({
                             id: json[i].Id,
                             name: json[i].FirstName + " " + json[i].LastName,
-                            starDescription: description
-
-                        });  
+                            starDescription: description,
+                            avatarPath: "/Content"+json[i].AvatarPath
+                        }); 
                     }
                 };
                 ko.applyBindings(new ViewModel);
