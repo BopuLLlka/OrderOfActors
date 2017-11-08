@@ -1,6 +1,6 @@
 ﻿<div id="mainContent" data-bind="foreach: star">
    <div class="starCard" data-bind="click: function () { myFunction(id)  }">
-       <div class="imgCorrector"><img class="starImg" data-bind="attr:{src:avatarPath}" /></div>
+       <div class="imgCorrector" data-bind="style:{backgroundImage:'url(\'' + avatarPath + '\')'}"><!--<img class="starImg" data-bind="attr:{src:avatarPath}" />--></div>
          <p class="starName" data-bind="text: name"></p>
          <p class="starDescription" data-bind="text: starDescription"></p>
    </div>

@@ -52,11 +52,10 @@
         padding: 10px;
     }
     .imgCorrector {
-        
-        margin:0,auto;
-        display: flex;
-        align-items:center;
-       
+        background-position: center;
+        background-repeat:no-repeat;
+        background-size:cover;
+        align-items: center;
         overflow: hidden;
         height: 300px;
         width: 300px;
@@ -148,6 +147,7 @@
         width: 100%;
         height: 100%;
     }
+  
 }
 
 @media(min-width:700px) {
@@ -182,6 +182,7 @@
         float:right;
         display: inline-block;
     }
+ 
 
 }
 @media(min-width:800px) {
@@ -192,7 +193,7 @@
         border-radius: 6px;
         margin-bottom: 10px;
         width: 100%;
-        height: 325px;
+        height: 225px;
         background-color: white;
         border: 1px solid black;
         padding: 10px;
@@ -203,27 +204,29 @@
         display: flex;
         align-content: center;
         overflow: hidden;
-        height: 300px;
-        width: 300px;
+        height: 200px;
+        width: 200px;
         border: 1px solid lightgrey;
         border-radius: 6px;
     }
 
     .starName {
+        text-align:left;
         float:left;
-
         font-size: 18px;
         font-weight: 600;
-        width: calc(100% - 300px);
+        width: calc(100% - 200px);
         padding-left: 10px;
     }
 
     .starDescription {
+        text-align:left;
         float: left;
         text-overflow:ellipsis;
         padding: 10px;
-        height: 250px;
-        width: calc(100% - 300px);
+
+        width: calc(100% - 200px);
+        height: calc(100% - 50px);
         word-wrap: break-word;
     }
 
@@ -252,15 +255,15 @@
             float: left
         }
 
-            #orderContainer * {
-                box-sizing: border-box;
-                width: calc(100% - 20px);
-                margin-top: 5px;
-                margin-bottom: 5px;
-                margin-left: 10px;
-                margin-right: 10px;
-                border-radius: 4px;
-            }
+        #orderContainer * {
+            box-sizing: border-box;
+            width: calc(100% - 20px);
+            margin-top: 5px;
+            margin-bottom: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
 
         #orderTitle {
             background-color: white;
@@ -274,6 +277,12 @@
     }
 
     @media(min-width:1000px) {
+        .starDescription {
+           
+            height: calc(100% - 60px);
+           
+        }
+
         #orderContainer div {
             box-sizing: border-box;
             width: calc(100% - 20px);
@@ -284,12 +293,12 @@
             border-radius: 4px;
         }
 
-            #orderContainer div > * {
-                box-sizing: border-box;
-                width: 46%;
-                height: 38px;
-                border-radius: 4px;
-            }
+        #orderContainer div > * {
+            box-sizing: border-box;
+            width: 46%;
+            height: 38px;
+            border-radius: 4px;
+        }
 
         body {
             font-size: 18px;
@@ -309,6 +318,9 @@
     }
 
     @media(min-width:1300px) {
+        .starDescription {
+            height: calc(100% - 65px);
+        }
         body {
             font-size: 20px;
         }
