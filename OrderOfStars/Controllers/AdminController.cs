@@ -51,7 +51,7 @@ namespace OrderOfStars.Controllers
                     upload.InputStream.Seek(0, System.IO.SeekOrigin.Begin);
                     //Bitmap size = new Bitmap(upload.InputStream);
                     //upload.InputStream.Seek(0, System.IO.SeekOrigin.Begin);
-                    string instructions = "maxwidth=300&maxheight=300";
+                    string instructions = "maxwidth=400&maxheight=400";
                 
 
                     // сохраняем файл в папку Files в проекте

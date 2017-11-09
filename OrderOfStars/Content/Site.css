@@ -133,10 +133,17 @@ footer {
     display: block;
     float: left;
 }
-
-.form-group{
-    width:100%;
+.form-group  {
+    width: 100%;
 }
+
+.form-group *{
+    width: 100%;
+}
+.form-error{
+    color:red;
+}
+
 .clearMarginAndPadding {
     margin:0px;
     padding:0px;

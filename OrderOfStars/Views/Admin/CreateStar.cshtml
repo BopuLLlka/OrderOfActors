@@ -1,4 +1,60 @@
-﻿<script type="text/javascript">
+﻿<div id="mainContent">
+  <form id="starForm" action="/api/Stars" method="post" >
+      <!--<form  action="/api/Stars" enctype="multipart/form-data" method="Post">--> 
+        <div class="form-group">
+            <p>
+                <label class="form-control-label" for="firstName">Имя:</label>
+                <input name="FirstName" data-validation="length"  data-validation-length="1-17" da type="text" class="form-control" id="firstName" placeholder="Имя">
+            </p>
+        </div>
+        <div class="form-group">
+            <p>
+                <label class="form-control-label" for="lastName">Фамилия:</label>
+                <input name="LastName" data-validation="length"  data-validation-length="0-17" type="text" class="form-control" id="lastName" value="" placeholder="Фамилия">
+            </p>
+        </div>
+        <div class="form-group">
+            <p>
+                <label for="regEmail">E-Mail:</label>
+                <input name="EMail" data-validation="email" required type="email" class="form-control" id="regEmail" placeholder="name@example.com">
+            </p>
+        </div>
+        <div class="form-group">
+            <p>
+                <label for="time">Продолжительность выступления:</label>
+                <input type="text" name="Time" class="form-control" id="addStarTimePicker" required placeholder="2:00">
+            </p>
+        </div>
+        <div class="form-group">
+            <p>
+                <label for="price">Цена выступления:</label>
+                <div class="form-control clearMarginAndPadding"><i class="fa fa-ruble rubIcon" style="font-size:24px"></i><input  type="number" data-validation="number" data-validation-allowing="range[100;100000000000]" value="1000" min="100" step="100" name="Price" required id="addStarPrice" placeholder="5000р"></div>
+            </p>
+        </div>
+        <div class="form-group">
+            <p>
+                <label for="descriptionTextArea">Описание:</label>
+                <textarea name="Description" data-validation="required" class="form-control" id="descriptionTextArea" rows="3"></textarea>
+            </p>
+        </div>
+        <div class="form-group">
+            <input type="file" name="upload" id="uploadFile"/>
+            <!--<button type="button" id="fileUloadBtn">Загрузить фото</button>-->
+            <p id="imgUploadMessage"></p>
+            <input type="text" id="fileNameHiddenSpan" name="AvatarPath" value="/Images/noAva.png">
+        </div>
+        <br />
+        <button type="button" onclick="uploadImg()" name="upload2" class="btn btn-outline-dark myBtn">Добавить</button>
+      </form>
+  </div>
+
+
+<script type="text/javascript">
+    $.validate({
+        lang: 'ru'
+    });
+
+
     var filesExt = ['jpg', 'jpeg', 'png']; // массив расширений
 
     var isImg = false;
@@ -8,9 +64,9 @@
     function uploadImg() {
 
         // $('#fileUloadBtn').on('click', function (e) {
-       
+
         if (isImg) {
-           
+
            // e.preventDefault();
             var files = document.getElementById('uploadFile').files;
             if (files.length > 0) {
@@ -19,7 +75,7 @@
                     for (var x = 0; x < files.length; x++) {
                         data.append("file" + x, files[x]);
                     }
-                    
+
                     $.ajax({
                         type: "POST",
                         url: '@Url.Action("Upload", "Admin")',
@@ -45,7 +101,7 @@
             else
                 $('#starForm').submit();
         }
-       
+
     };
     $(document).ready(function () {
         $('input[type=file]').change(function () {
@@ -59,7 +115,7 @@
                 $('#imgUploadMessage').append('А это точно картинка? Поддерживаемые форматы: jpg, jpeg, png');
             }
         });
-       
+
     });
 </script>
 
@@ -82,44 +138,5 @@
         });
     });
 </script>
-
-<div id="mainContent">
-  <form id="starForm" action="/api/Stars" method="post" >
-      <!--<form  action="/api/Stars" enctype="multipart/form-data" method="Post">--> 
-        <div class="form-group">
-            <label class="form-control-label" for="firstName">Имя:</label>
-            <input name="FirstName" required type="text" class="form-control" id="firstName" placeholder="Имя">
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" for="lastName">Фамилия:</label>
-            <input name="LastName" required type="text" class="form-control" id="lastName" placeholder="Фамилия">
-        </div>
-        <div class="form-group">
-            <label for="regEmail">E-Mail:</label>
-            <input name="EMail" required type="email" class="form-control" id="regEmail" placeholder="name@example.com">
-        </div>
-        <div class="form-group">
-            <label for="time">Продолжительность выступления:</label>
-            <input type="text" name="Time" class="form-control" id="addStarTimePicker" required placeholder="2:00">
-        </div>
-        <div class="form-group">
-            <label for="price">Цена выступления:</label>
-            <div class="form-control clearMarginAndPadding" ><i class="fa fa-ruble rubIcon" style="font-size:24px"></i><input type="number" value="1000" min="100" step="100" name="Price" required id="addStarPrice" placeholder="5000р"></div>
-        </div>
-        <div class="form-group">
-            <label for="descriptionTextArea">Описание:</label>
-            <textarea name="Description" required class="form-control" id="descriptionTextArea" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-            <input type="file" name="upload" id="uploadFile"/>
-            <!--<button type="button" id="fileUloadBtn">Загрузить фото</button>-->
-            <p id="imgUploadMessage"></p>
-            <input type="text" id="fileNameHiddenSpan" name="AvatarPath" value="/Images/noAva.png">
-        </div>
-        <br />
-        <button type="button" onclick="uploadImg()" name="upload2" class="btn btn-outline-dark myBtn">Добавить</button>
-      </form>
-</div>
-
 
 
