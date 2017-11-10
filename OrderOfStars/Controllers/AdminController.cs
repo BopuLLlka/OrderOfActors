@@ -69,7 +69,7 @@ namespace OrderOfStars.Controllers
             }
             return fileHash;
         }
-        private ApplicationContext db = new ApplicationContext();
+       // private ApplicationContext db = new ApplicationContext();
         /// <summary>
         /// Вьюшка с админ панелью
         /// </summary>
@@ -90,7 +90,6 @@ namespace OrderOfStars.Controllers
         /// <summary>
         /// Подключаем БД для работы с пользователями и ролями
         /// </summary>
-        ApplicationContext context = new ApplicationContext();
         public ApplicationUserManager UserManager
         {
             get
@@ -106,11 +105,12 @@ namespace OrderOfStars.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult UsersAndRoles()
         {
-            
+            using(var context = new ApplicationContext()) { 
             var allUsers = context.Users.ToList();
             var allRoles = context.Roles.ToList();
             var tuple = new Tuple<List<ApplicationUser>,  List<IdentityRole>>(allUsers, allRoles);
             return View(tuple);
+            }
         }
         /// <summary>
         /// Добавляет пользователю роль и возвращает частичное представление в ajax

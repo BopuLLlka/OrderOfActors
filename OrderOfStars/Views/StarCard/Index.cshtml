@@ -2,9 +2,7 @@
 <script>
 
     $(document).ready(function () {
-  
-        //Call EmpDetails jsonResult Method
-        $.getJSON("/api/Stars/@Model",
+        $.getJSON("/api/Stars/@Model", ///Нужно придумать другое получение!!!
             function (json) {
                 var viewModel = {
                     id: json.Id,

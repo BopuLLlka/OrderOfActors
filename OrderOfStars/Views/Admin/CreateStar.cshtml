@@ -64,14 +64,14 @@
     function uploadImg() {
 
         // $('#fileUloadBtn').on('click', function (e) {
+        
 
         if (isImg) {
 
            // e.preventDefault();
-            var files = document.getElementById('uploadFile').files;
+            var files = $('#uploadFile').files;
             if (files.length > 0) {
-                if (window.FormData !== undefined) {
-                    var data = new FormData();
+                if (window.FormData !== undefined) {я
                     for (var x = 0; x < files.length; x++) {
                         data.append("file" + x, files[x]);
                     }
