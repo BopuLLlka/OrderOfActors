@@ -214,6 +214,9 @@ footer {
     width: calc(50% + 1px);
     float: right;
 }
+.fa fa-ruble rubIcon{
+    font-size:24px;
+}
 /*--------------------------------------------------*/
 .pageUpTitle {
     font-size: 25px;

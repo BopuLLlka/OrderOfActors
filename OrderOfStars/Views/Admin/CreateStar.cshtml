@@ -54,7 +54,6 @@
         lang: 'ru'
     });
 
-
     var filesExt = ['jpg', 'jpeg', 'png']; // массив расширений
 
     var isImg = false;
@@ -68,10 +67,10 @@
 
         if (isImg) {
 
-           // e.preventDefault();
-            var files = $('#uploadFile').files;
-            if (files.length > 0) {
-                if (window.FormData !== undefined) {я
+            // e.preventDefault();
+            var files = $('#uploadFile').prop('files');
+                if (window.FormData !== undefined) {
+                    var data = new FormData();
                     for (var x = 0; x < files.length; x++) {
                         data.append("file" + x, files[x]);
                     }
