@@ -1,10 +1,12 @@
 ﻿@model int
-<script>
 
+<script>
     $(document).ready(function () {
-        $.getJSON("/api/Stars/@Model", ///Нужно придумать другое получение!!!
+        var starId =@Model;///Нужно придумать другое получение!!!
+        $.getJSON("/api/Stars/" + starId, 
             function (json) {
                 var viewModel = {
+                    ordererId: "Тут потом будет ID",
                     id: json.Id,
                     name: json.FirstName + " " + json.LastName,
                     description: json.Description,
@@ -46,6 +48,8 @@
     <div id="fullStarCardDescription" data-bind="text:description"></div>
     <form id="orderContainer" action="/api/OrderModels" method="post">
         <input name="StarId" data-bind="attr:{value:id}" hidden >
+        <input name="StarName" data-bind="attr:{value:name}" hidden>
+        <input name="OrdererId" data-bind="attr:{value:ordererId}" hidden>
         <p id="orderTitle" class="titleText">Заказать выступление</p>
             <br />
         <div id="city">
@@ -61,7 +65,7 @@
         </div>
         <div id="time">
             <p class="orderText">Время начала:</p>
-            <input type="text" class="timePicker" name="Time" required  placeholder="Выберите время начала выступления...">
+            <input type="text" class="timePicker" name="ShowTime" required  placeholder="Выберите время начала выступления...">
         </div>
         <div id="orderBtnContainer">
             <button type="submit" class="btn myBtn btn-dark">Заказать</button>

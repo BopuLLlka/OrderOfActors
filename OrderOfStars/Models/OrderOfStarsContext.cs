@@ -23,6 +23,5 @@ namespace OrderOfStars.Models
 
         public System.Data.Entity.DbSet<OrderOfStars.Models.OrderModel> OrderModels { get; set; }
 
-        public System.Data.Entity.DbSet<OrderOfStars.Models.ImgModel> ImgModels { get; set; }
     }
 }

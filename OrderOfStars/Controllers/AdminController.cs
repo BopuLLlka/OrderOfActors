@@ -102,7 +102,7 @@ namespace OrderOfStars.Controllers
         /// содержатся все пользователи и все роли, пока так.
         /// </summary>
         /// <returns>Передаются лист пользователей и лист ролей</returns>
-        [Authorize(Roles = "Admin")]
+        
         public ActionResult UsersAndRoles()
         {
             using(var context = new ApplicationContext()) { 
@@ -119,7 +119,7 @@ namespace OrderOfStars.Controllers
         /// <param name="roleName">Имя роли из селекта</param>
         /// <returns>Возвращает текст с ошибкой или сообщающий об успехе</returns>
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        
         public ActionResult AddRoleToUser(string userName, string roleName)
         {
            ApplicationUser user = UserManager.FindByEmail(userName);

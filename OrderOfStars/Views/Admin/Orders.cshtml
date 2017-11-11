@@ -1,10 +1,17 @@
 ﻿<div id="mainContent" data-bind="foreach: order">
-    <div class="orderCard">
-        <div><p>Id звезды: </p><p class="orderStarId" data-bind="text:starId"></p></div>
-        <div><p>Город: </p><p class="orderCity" data-bind="text:city"></p></div>
-        <div><p>Дата: </p><p class="orderDate" data-bind="text:date"></p></div>
-        <div><p>Время: </p><p class="orderTime" data-bind="text:time"></p></div>
-    </div>
+    <form action="">
+        <div class="orderCard">
+            <div><p>Номер заказа:</p><p class="orderOrderId" data-bind="text:orderId"></p></div>
+            <div><p>Id заказчика:</p><p class="orderOrdererId" data-bind="text:ordererId"></p></div>
+            <div><p>Id звезды: </p><p class="orderStarId" data-bind="text:starId"></p></div>
+            <div><p>Имя звезды:</p><p class="orderStarName" data-bind="text:starName"></p></div>
+            <div><p>Город: </p><p class="orderCity" data-bind="text:city"></p></div>
+            <div><p>Дата: </p><p class="orderDate" data-bind="text:date"></p></div>
+            <div><p>Время: </p><p class="orderTime" data-bind="text:showTime"></p></div>
+            <div><p>Статус: </p><p>Ожидает подтверждения</p></div>
+            <button type="submit">Одобрить заказ</button>
+        </div>
+    </form>
 </div>
 <script>
     $(document).ready(function () {
@@ -16,10 +23,13 @@
 
                     for (var i = 0; i < json.length; i++) {
                         self.order.push({
+                            orderId: json[i].Id,
+                            ordererId: json[i].OrdererId,
                             starId: json[i].StarId,
+                            starName: json[i].StarName,
                             city: json[i].City,
                             date: json[i].Date,
-                            time: json[i].Time
+                            showTime: json[i].ShowTime
 
                         });
                     }

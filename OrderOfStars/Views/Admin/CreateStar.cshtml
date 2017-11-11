@@ -93,10 +93,12 @@
                     alert("Браузер не поддерживает загрузку файлов HTML5!");
                 }
             }
-        }
         else {
             if (wasChange)
-                e.preventDefault();
+            {
+                $('#fileNameHiddenSpan').attr({ "value": "/Images/noAva.png" });
+                wasChange = false;
+            }
             else
                 $('#starForm').submit();
         }
